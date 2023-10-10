@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6c1d2082-d221-41b4-8232-15bdc1997895" name="Changes" comment="base frame">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/ktop.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/__tests__/cpu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/__tests__/single.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/__tests__/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/forge.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/src/preload.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/src/renderer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/src/types.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/src/types/windowExtension.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/src/utils/useWindowsApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/vite.main.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/vite.preload.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/vite.renderer.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webapp/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="TypeScript File" />
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2WVx0ZFRYLmNo15fbdVJBZXe8hw" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/Projects/ktop",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "E:\\Projects\\ktop\\webapp\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/webapp/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6c1d2082-d221-41b4-8232-15bdc1997895" name="Changes" comment="" />
+      <created>1696831327059</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696831327059</updated>
+      <workItem from="1696831328177" duration="343000" />
+      <workItem from="1696831682520" duration="1384000" />
+      <workItem from="1696838271266" duration="59000" />
+      <workItem from="1696838933193" duration="8033000" />
+      <workItem from="1696900684859" duration="5363000" />
+      <workItem from="1696906198132" duration="1580000" />
+      <workItem from="1696907822151" duration="872000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="base frame" />
+    <option name="LAST_COMMIT_MESSAGE" value="base frame" />
+  </component>
+</project>
