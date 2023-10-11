@@ -1,11 +1,11 @@
-const {exec} = require('node:child_process');
-setInterval(()=>{
-    exec('typeperf "\\LogicalDisk(_Total)\\% Disk Time" -sc 1', {encoding:'GBK'},(error, stdout, stderr) => {
-        if (error) {
-            console.error(`exec error: ${error}`);
-            return;
-        }
-        console.log(`stdout: ${stdout}`);
-        console.error(`stderr: ${stderr}`);
+const si = require('systeminformation');
+
+// 获取所有磁盘的读取和写入速率
+si.fsStats().then((data) => {
+    console.log(data)
+    const disks = data.fsStats;
+    disks.forEach((disk) => {
+        console.log(`磁盘 ${disk.fs} 的读取速率: ${disk.rx_sec} bytes/s`);
+        console.log(`磁盘 ${disk.fs} 的写入速率: ${disk.wx_sec} bytes/s`);
     });
-},1000)
+});

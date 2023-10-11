@@ -7,6 +7,23 @@ export function cpuUsage(callback: any) {
     ipcRenderer.on('cpu-usage', callback)
 }
 
-contextBridge.exposeInMainWorld('electronAPI', {
-    cpuUsage
-})
+export function appConfig(callback: any) {
+    ipcRenderer.on('app-config', callback)
+}
+
+export function setWindowPosition(offsetX: number, offsetY: number) {
+    ipcRenderer.send('set-window-position', offsetX, offsetY)
+}
+export function mouseAction(e:string) {
+    ipcRenderer.send('mouse-action', e)
+}
+
+export const apis = {
+    cpuUsage,
+    appConfig,
+    setWindowPosition,
+    mouseAction
+};
+
+
+contextBridge.exposeInMainWorld('electronAPI', apis)

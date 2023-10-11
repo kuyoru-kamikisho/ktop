@@ -1,6 +1,10 @@
 import {app, BrowserWindow} from 'electron';
 import path from 'path';
-import {sendCpuAvg} from "./utils/cpus";
+import {sendCpuAvg} from "./utils/sender/cpus";
+import {sendConfig} from "./utils/sender/theme";
+import {setWindowPosition} from "./utils/receiver/setWindowPosition";
+
+const readYaml = require('read-yaml');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -8,25 +12,34 @@ if (require('electron-squirrel-startup')) {
 }
 
 const createWindow = () => {
-    // Create the browser window.
-    const mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),
-        },
-    });
+    readYaml("./resources/config.yaml", function (err: any, config: any) {
+        if (err) throw err;
 
-    // and load the index.html of the app.
-    if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-        mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
-    } else {
-        mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
-    }
+        // Create the browser window.
+        const mainWindow = new BrowserWindow({
+            title: 'ktop',
+            width: config.width,
+            height: config.height,
+            frame: config.frame,
+            transparent: config.transparent,
+            webPreferences: {
+                preload: path.join(__dirname, 'preload.js'),
+            },
+        });
 
-    // Open the DevTools.
-    mainWindow.webContents.openDevTools();
-    sendCpuAvg(mainWindow)
+        // and load the index.html of the app.
+        if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
+            mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
+        } else {
+            mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
+        }
+
+        // Open the DevTools.
+        mainWindow.webContents.openDevTools();
+        sendCpuAvg(mainWindow)
+        sendConfig(mainWindow, config)
+        setWindowPosition(mainWindow)
+    })
 };
 
 // This method will be called when Electron has finished
