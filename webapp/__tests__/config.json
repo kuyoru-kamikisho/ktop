@@ -1,6 +1,22 @@
 {
-  "width": 300,
+  "width": 600,
   "height": 300,
+  "cpu": {
+    "text": {
+      "style": "",
+      "size": ""
+    }
+  },
+  "cpuTextColor": "white",
+  "backgroundCpu": "rgba(0,0,0)",
+  "memoryTextColor": "white",
   "backgroundColor": "rgba(0,0,0)",
-  "backgroundImg": null
+  "backgroundMemory": "rgba(0,0,0)",
+  "backgroundImg": null,
+  "frame": false,
+  "transparent": true,
+  "position": [
+    "10%",
+    "10%"
+  ]
 }

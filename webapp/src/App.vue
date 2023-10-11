@@ -14,11 +14,11 @@ import {registerWindowMove} from "./utils/pageToWindow/registerWindowMove";
 const cpu = ref('0')
 const memory = ref('0')
 const {appConfig} = storeToRefs(useApp());
-const backgroundColor = computed(() => appConfig.value?.backgroundColor)
-const backgroundCpu = computed(() => appConfig.value?.backgroundCpu)
-const backgroundMemory = computed(() => appConfig.value?.backgroundMemory)
-const cpuTextColor = computed(() => appConfig.value?.cpuTextColor)
-const memoryTextColor = computed(() => appConfig.value?.memoryTextColor)
+const backgroundColor = computed(() => appConfig.value?.main.bgcolor)
+const backgroundCpu = computed(() => appConfig.value?.cpu.bgcolor)
+const backgroundMemory = computed(() => appConfig.value?.memory.bgcolor)
+const cpuTextColor = computed(() => appConfig.value?.cpu.textcolor)
+const memoryTextColor = computed(() => appConfig.value?.memory.textcolor)
 
 onMounted(() => {
   window.electronAPI.cpuUsage((e: any, c: number, m: number) => {

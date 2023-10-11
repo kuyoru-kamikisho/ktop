@@ -12,16 +12,16 @@ if (require('electron-squirrel-startup')) {
 }
 
 const createWindow = () => {
-    readYaml("./resources/config.yaml", function (err: any, config: any) {
-        if (err) throw err;
+    readYaml('./resources/config.yaml',function (err:any,config:any) {
+        if (err)throw err
 
         // Create the browser window.
         const mainWindow = new BrowserWindow({
-            title: 'ktop',
-            width: config.width,
-            height: config.height,
-            frame: config.frame,
-            transparent: config.transparent,
+            title: config.main.title,
+            width: config.main.width,
+            height: config.main.height,
+            frame: config.build.frame,
+            transparent: config.build.transparent,
             webPreferences: {
                 preload: path.join(__dirname, 'preload.js'),
             },
