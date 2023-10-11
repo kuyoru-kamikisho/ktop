@@ -1,6 +1,6 @@
 import {app, BrowserWindow} from 'electron';
 import path from 'path';
-import {sendCpuAvg} from "./utils/useWindowsApi";
+import {sendCpuAvg} from "./utils/cpus";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {

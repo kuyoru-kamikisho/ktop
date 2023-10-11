@@ -8,7 +8,7 @@ let cpu_nums = 0;
 let cpus = [];
 setInterval(() => {
     cpus = os.cpus()
-    avera_mem = parseInt((100 * (1 - os.freemem() / os.totalmem())).toFixed(0))
+    avera_mem =
     cpu_nums = cpus.length
     for (const cpu of cpus) {
         total = cpu.times.idle

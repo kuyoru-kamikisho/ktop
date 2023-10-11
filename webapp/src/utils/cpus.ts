@@ -3,8 +3,9 @@ import {BrowserWindow} from "electron";
 
 export function sendCpuAvg(windowI: BrowserWindow) {
     setInterval(() => {
-        getCPUUsage(v => {
-            windowI.webContents.send('cpu-usage', v);
+        const memory_usage = 1 - os.freemem() / os.totalmem();
+        getCPUUsage(cpu_usage => {
+            windowI.webContents.send('cpu-usage', cpu_usage, memory_usage);
         })
     }, 1000)
 }

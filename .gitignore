@@ -3,7 +3,7 @@ logs
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
+webapp/yarn-error.log
 lerna-debug.log*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
@@ -87,6 +87,7 @@ typings/
 
 # Vite
 .vite/
+.idea
 
 # Electron-Forge
 out/
