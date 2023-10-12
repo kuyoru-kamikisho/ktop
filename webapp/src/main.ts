@@ -1,26 +1,29 @@
-import {app, BrowserWindow} from 'electron';
+import {app, Menu, nativeImage, Tray, BrowserWindow} from 'electron';
 import path from 'path';
 import {sendCpuAvg} from "./utils/sender/cpus";
 import {sendConfig} from "./utils/sender/theme";
 import {setWindowPosition} from "./utils/receiver/setWindowPosition";
 
+let tray: null | Tray = null;
+const appIconPath = './resources/favicon.ico'
 const readYaml = require('read-yaml');
 
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
     app.quit();
 }
 
 const createWindow = () => {
-    readYaml('./resources/config.yaml',function (err:any,config:any) {
-        if (err)throw err
+    readYaml('./resources/config.yaml', function (err: any, config: any) {
+        if (err) throw err
 
-        // Create the browser window.
         const mainWindow = new BrowserWindow({
+            icon: appIconPath,
             title: config.main.title,
             width: config.main.width,
             height: config.main.height,
+            resizable: config.main.resizable,
             frame: config.build.frame,
+            alwaysOnTop: config.main.alwaysOnTop,
             transparent: config.build.transparent,
             webPreferences: {
                 preload: path.join(__dirname, 'preload.js'),
@@ -34,35 +37,38 @@ const createWindow = () => {
             mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
         }
 
-        // Open the DevTools.
-        mainWindow.webContents.openDevTools();
+        if (config.main.opendevtool)
+            mainWindow.webContents.openDevTools();
         sendCpuAvg(mainWindow)
+        mainWindow.setPosition(config.main.position[0], config.main.position[1])
+        mainWindow.setSkipTaskbar(true)
+        mainWindow.show()
         sendConfig(mainWindow, config)
-        setWindowPosition(mainWindow)
+        setWindowPosition(mainWindow, config)
     })
 };
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
+app.whenReady().then(() => {
+    tray = new Tray(appIconPath);
+    const menu = Menu.buildFromTemplate([
+        {label: '退出', type: 'normal', role: 'quit'}
+    ]);
+    tray.setContextMenu(menu)
+    tray.setTitle('ktop')
+    app.dock.hide();
+});
+
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit();
+        tray?.destroy();
     }
 });
 
 app.on('activate', () => {
-    // On OS X it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) {
         createWindow();
     }
 });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
