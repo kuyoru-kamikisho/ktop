@@ -14,7 +14,10 @@ if (require('electron-squirrel-startup')) {
 
 const createWindow = () => {
     readYaml('./resources/config.yaml', function (err: any, config: any) {
-        if (err) throw err
+        if (err) {
+            app.quit()
+            throw err;
+        }
 
         const mainWindow = new BrowserWindow({
             icon: appIconPath,

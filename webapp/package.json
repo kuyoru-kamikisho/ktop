@@ -2,7 +2,7 @@
   "name": "ktop",
   "productName": "ktop",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Small tool to monito the cpu memroy of windows system",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
@@ -13,8 +13,8 @@
   },
   "keywords": [],
   "author": {
-    "name": "lijie.xin",
-    "email": "lijie.xin@cssca.com"
+    "name": "kuyoru",
+    "email": "kuyoru730@gmail.com"
   },
   "license": "MIT",
   "devDependencies": {
