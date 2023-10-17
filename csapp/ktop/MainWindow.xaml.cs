@@ -1,4 +1,5 @@
-﻿using ktop.state;
+﻿using ktop.classes;
+using ktop.state;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,6 +31,7 @@ namespace ktop
 
             this.Width = Store.__config__.width;
             this.Height = Store.__config__.height;
+            //new DeviceInfo();
         }
     }
 }
