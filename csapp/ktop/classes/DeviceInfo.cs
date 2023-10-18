@@ -6,6 +6,10 @@ using System.Text;
 using System.Timers;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows.Threading;
+using System.Threading;
+using System.Management;
+using System.Runtime.InteropServices;
 
 namespace ktop.classes
 {
@@ -13,36 +17,46 @@ namespace ktop.classes
     {
         private byte _cpuUsageP = 0;
         private byte _memoryUsageP = 0;
+        private float _memoryTotal = 0;
         private byte _diskUsageP = 0;
-        private Timer _timer;
+        private DispatcherTimer _timer;
+        private ManagementObjectSearcher cpu_searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PerfFormattedData_PerfOS_Processor WHERE Name='_Total'");
+        private ManagementObjectSearcher memory_searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
         public event PropertyChangedEventHandler PropertyChanged;
-        private PerformanceCounter cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-        private PerformanceCounter memoryCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
-        private PerformanceCounter diskCounter = new PerformanceCounter("PhysicalDisk", "% Disk Time", "_Total");
-
         public DeviceInfo()
         {
-            _timer = new Timer();
-            _timer.Interval = 1000;
-            _timer.Elapsed += (s, e) =>
-            {
-                Random random = new Random();
-                var c = (byte)random.Next(0, 101);
-                Debug.WriteLine(c);
-                CpuUsageP = c;
-            };
-            _timer.Start();
+            queryDeviceInfo();
         }
 
         private void queryDeviceInfo()
         {
-            while (true)
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(1);
+            _timer.Tick += (o, e) =>
             {
-                var c = cpuCounter.NextValue();
-                Debug.WriteLine(c);
-                CpuUsageP = Convert.ToByte(c);
-                System.Threading.Thread.Sleep(1000);
-            }
+                // cpu(单核)
+                UInt64 cpuValue = 0;
+                foreach (var queryObj in cpu_searcher.Get())
+                {
+                    cpuValue = (UInt64)queryObj["PercentProcessorTime"];
+                }
+                CpuUsageP = Convert.ToByte(cpuValue);
+
+
+                // 内存
+                var memoryValues = memory_searcher.Get().Cast<ManagementObject>().Select(mo => new
+                {
+                    FreePhysicalMemory = Double.Parse(mo["FreePhysicalMemory"].ToString()),
+                    TotalVisibleMemorySize = Double.Parse(mo["TotalVisibleMemorySize"].ToString())
+                }).FirstOrDefault();
+
+                if (memoryValues != null)
+                {
+                    var percent = ((memoryValues.TotalVisibleMemorySize - memoryValues.FreePhysicalMemory) / memoryValues.TotalVisibleMemorySize) * 100;
+                    MemoryUsageP = Convert.ToByte(percent);
+                }
+            };
+            _timer.Start();
         }
 
         public byte CpuUsageP
@@ -53,7 +67,7 @@ namespace ktop.classes
                 if (_cpuUsageP != value)
                 {
                     _cpuUsageP = value;
-                    PropertyHasChanged(nameof(_cpuUsageP));
+                    PropertyHasChanged(nameof(CpuUsageP));
                 }
             }
         }
@@ -65,7 +79,20 @@ namespace ktop.classes
                 if (_memoryUsageP != value)
                 {
                     _memoryUsageP = value;
-                    PropertyHasChanged(nameof(_memoryUsageP));
+                    PropertyHasChanged(nameof(MemoryUsageP));
+                }
+            }
+        }
+
+        public byte DiskUsageP
+        {
+            get { return _diskUsageP; }
+            set
+            {
+                if (_diskUsageP != value)
+                {
+                    _diskUsageP = value;
+                    PropertyHasChanged(nameof(DiskUsageP));
                 }
             }
         }

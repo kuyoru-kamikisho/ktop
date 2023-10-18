@@ -12,11 +12,14 @@
         Foreground="White"
         AllowsTransparency="True" 
         WindowStyle="None"
-        Background="{x:Null}">
-    <Grid Background="#99FFFFFF">
+        Background="{x:Null}" 
+        Topmost="True">
+    <Grid Background="#9928272B">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="1"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
@@ -26,15 +29,13 @@
                 </Canvas>
             </Viewbox>
         </Grid>
-        <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock x:Name="textBlock" Text="{Binding CpuUsageP}">
-                <TextBlock.DataContext>
-                    <classes:DeviceInfo/>
-                </TextBlock.DataContext>
-            </TextBlock>
-        </Grid>
+        <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="1"/>
         <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="测试2"></TextBlock>
+            <TextBlock x:Name="CpuTextor" Text="{Binding CpuUsageP}"></TextBlock>
+        </Grid>
+        <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="3"/>
+        <Grid Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock x:Name="MemoryTextor" Text="{Binding MemoryUsageP}"></TextBlock>
         </Grid>
     </Grid>
 </Window>

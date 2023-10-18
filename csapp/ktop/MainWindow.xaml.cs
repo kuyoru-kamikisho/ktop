@@ -31,7 +31,11 @@ namespace ktop
 
             this.Width = Store.__config__.width;
             this.Height = Store.__config__.height;
-            //new DeviceInfo();
+
+            // 数据绑定区域
+            var deviceInfo = new DeviceInfo();
+            CpuTextor.DataContext = deviceInfo;
+            MemoryTextor.DataContext = deviceInfo;
         }
     }
 }
