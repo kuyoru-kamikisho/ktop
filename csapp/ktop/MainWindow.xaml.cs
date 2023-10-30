@@ -1,4 +1,5 @@
-﻿using ktop.classes;
+﻿using Hardcodet.Wpf.TaskbarNotification;
+using ktop.classes;
 using ktop.state;
 using System;
 using System.Collections.Generic;
@@ -23,12 +24,20 @@ namespace ktop
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private double _initX = 0;
+        private double _initY = 0;
+        private double _deltaX = 0;
+        private double _deltaY = 0;
+        private bool _isMouseDown = false;
         public MainWindow()
         {
             Store.ReadConfig();
 
             InitializeComponent();
 
+            this.Left = Store.__config__.x;
+            this.Top = Store.__config__.y;
             this.Width = Store.__config__.width;
             this.Height = Store.__config__.height;
 
@@ -36,6 +45,58 @@ namespace ktop
             var deviceInfo = new DeviceInfo();
             CpuTextor.DataContext = deviceInfo;
             MemoryTextor.DataContext = deviceInfo;
+            this.ShowInTaskbar = false;
+
+            // 托盘区域图标
+            var trayicon = new TaskbarIcon();
+            trayicon.Icon = new System.Drawing.Icon("resources/imgs/icon.ico");
+            var menu = new System.Windows.Controls.ContextMenu();
+            var exitMenuItem = new System.Windows.Controls.MenuItem();
+            exitMenuItem.Header = "退出";
+            exitMenuItem.Click += (sender, e) =>
+            {
+                System.Windows.Application.Current.Shutdown();
+            };
+            menu.Items.Add(exitMenuItem);
+            trayicon.ContextMenu = menu;
+        }
+
+        private void OpenTaskManager(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                Process.Start("cmd.exe", "/c start notepad ./resources/config/default.json");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            _initX = Mouse.GetPosition(null).X;
+            _initY = Mouse.GetPosition(null).Y;
+            _isMouseDown = true;
+        }
+
+        private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            _isMouseDown = false;
+        }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_isMouseDown)
+            {
+                _deltaX = Mouse.GetPosition(null).X - _initX;
+                _deltaY = Mouse.GetPosition(null).Y - _initY;
+                this.Left = _deltaX + this.Left;
+                this.Top = _deltaY + this.Top;
+                Store.__config__.x = this.Left;
+                Store.__config__.y = this.Top;
+                Store.WriteConfig();
+            }
         }
     }
 }

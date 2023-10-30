@@ -22,5 +22,11 @@ namespace ktop.state
             var jsonStr = File.ReadAllText(configPath);
             __config__ = JsonConvert.DeserializeObject<Config>(jsonStr);
         }
+
+        public static void WriteConfig()
+        {
+            var json=JsonConvert.SerializeObject(__config__,Formatting.Indented);
+            File.WriteAllText(configPath, json);
+        }
     }
 }

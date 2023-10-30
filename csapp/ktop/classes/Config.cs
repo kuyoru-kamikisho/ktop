@@ -10,5 +10,7 @@ namespace ktop.classes
     {
         public double width { set; get; }
         public double height { set; get; }
+        public double x { set; get; }
+        public double y { set; get; }
     }
 }
