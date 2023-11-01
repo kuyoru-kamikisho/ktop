@@ -19,20 +19,23 @@ namespace ktop.classes
         private byte _memoryUsageP = 0;
         private float _memoryTotal = 0;
         private byte _diskUsageP = 0;
-        private DispatcherTimer _timer;
+        private System.Timers.Timer _timer;
+        private readonly BackgroundWorker _backWork;
         private ManagementObjectSearcher cpu_searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PerfFormattedData_PerfOS_Processor WHERE Name='_Total'");
         private ManagementObjectSearcher memory_searcher = new ManagementObjectSearcher("SELECT * FROM Win32_OperatingSystem");
         public event PropertyChangedEventHandler PropertyChanged;
         public DeviceInfo()
         {
-            queryDeviceInfo();
+            _backWork = new BackgroundWorker();
+            _backWork.DoWork += new DoWorkEventHandler(queryDeviceInfo);
+            _backWork.RunWorkerAsync();
         }
 
-        private void queryDeviceInfo()
+        private void queryDeviceInfo(object sender, DoWorkEventArgs de)
         {
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromSeconds(1);
-            _timer.Tick += (o, e) =>
+            _timer = new System.Timers.Timer();
+            _timer.Interval = 1000;
+            _timer.Elapsed += (o, e) =>
             {
                 // cpu(单核)
                 UInt64 cpuValue = 0;

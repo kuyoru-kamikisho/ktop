@@ -7,6 +7,7 @@
     <UseWPF>true</UseWPF>
     <PackageIcon>icon.jpg</PackageIcon>
     <ApplicationIcon>resources\imgs\icon.ico</ApplicationIcon>
+    <Configurations>Debug;Release;publish</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

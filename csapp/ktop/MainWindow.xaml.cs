@@ -12,10 +12,12 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static ktop.classes.WindowStyle;
 
 namespace ktop
 {
@@ -35,6 +37,10 @@ namespace ktop
             Store.ReadConfig();
 
             InitializeComponent();
+            Loaded += (o, s) =>
+            {
+                HideWindowInTaskView(this);
+            };
 
             this.Left = Store.__config__.x;
             this.Top = Store.__config__.y;
@@ -45,7 +51,6 @@ namespace ktop
             var deviceInfo = new DeviceInfo();
             CpuTextor.DataContext = deviceInfo;
             MemoryTextor.DataContext = deviceInfo;
-            this.ShowInTaskbar = false;
 
             // 托盘区域图标
             var trayicon = new TaskbarIcon();
@@ -89,14 +94,26 @@ namespace ktop
         {
             if (_isMouseDown)
             {
+                var window = Window.GetWindow(this);
                 _deltaX = Mouse.GetPosition(null).X - _initX;
                 _deltaY = Mouse.GetPosition(null).Y - _initY;
-                this.Left = _deltaX + this.Left;
-                this.Top = _deltaY + this.Top;
+                window.Left = _deltaX + this.Left;
+                window.Top = _deltaY + this.Top;
+
                 Store.__config__.x = this.Left;
                 Store.__config__.y = this.Top;
                 Store.WriteConfig();
             }
+        }
+
+        private void Setting_Icon_Hover(object sender, MouseEventArgs e)
+        {
+            IconPath.Fill = new SolidColorBrush(Colors.LightBlue);
+        }
+
+        private void Setting_Icon_Leave(object sender, MouseEventArgs e)
+        {
+            IconPath.Fill = new SolidColorBrush(Colors.White);
         }
     }
 }
