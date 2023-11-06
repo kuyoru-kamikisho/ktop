@@ -1,5 +1,6 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
 using ktop.classes;
+using ktop.resources;
 using ktop.state;
 using System;
 using System.Collections.Generic;

@@ -12,5 +12,7 @@ namespace ktop.classes
         public double height { set; get; }
         public double x { set; get; }
         public double y { set; get; }
+        public bool autorun { set; get; }
+        public bool autoupdate { set; get; }
     }
 }
