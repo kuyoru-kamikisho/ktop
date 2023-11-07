@@ -4,5 +4,6 @@
   "x": 200,
   "y": 200,
   "autorun": false,
-  "autoupdate": true
+  "autoupdate": true,
+  "shotcut": true
 }

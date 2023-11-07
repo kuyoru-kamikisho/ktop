@@ -1,0 +1,34 @@
+[
+  {
+    "id": "tomato",
+    "name": "番茄工作法（工作25分钟）",
+    "time": "1500",
+    "type": "loop",
+    "nextdelay": 300,
+    "autorunby": null
+  },
+  {
+    "id": "toresk",
+    "name": "番茄工作法（休息5分钟）",
+    "time": "300",
+    "type": "passive",
+    "nextdelay": null,
+    "autorunby": "tomato"
+  },
+  {
+    "id": "taobao",
+    "name": "晚间整点秒杀活动购物啦",
+    "time": "23:55:00",
+    "type": "clock",
+    "nextdelay":null,
+    "autorunby": null
+  },
+  {
+    "id": "sign-in",
+    "name": "每周二下午十点提示",
+    "time": "2023-11-07T10:14:59.638Z",
+    "type": "clock",
+    "nextdelay": null,
+    "autorunby": null
+  }
+]

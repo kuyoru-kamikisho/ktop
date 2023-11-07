@@ -14,5 +14,6 @@ namespace ktop.classes
         public double y { set; get; }
         public bool autorun { set; get; }
         public bool autoupdate { set; get; }
+        public bool shotcut { set; get; }
     }
 }

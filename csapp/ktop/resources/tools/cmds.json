@@ -1,0 +1,10 @@
+[
+  {
+    "name": "2s后强制关机",
+    "run": "shutdown -s -f -t 2"
+  },
+  {
+    "name": "1h后强制关机",
+    "run": "shutdown -s -f -t 3600"
+  }
+]
