@@ -66,19 +66,6 @@ namespace ktop
             menu.Items.Add(exitMenuItem);
             trayicon.ContextMenu = menu;
         }
-
-        private void OpenTaskManager(object sender, MouseButtonEventArgs e)
-        {
-            try
-            {
-                Process.Start("cmd.exe", "/c start notepad ./resources/config/default.json");
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             _initX = Mouse.GetPosition(null).X;
@@ -109,12 +96,24 @@ namespace ktop
 
         private void Setting_Icon_Hover(object sender, MouseEventArgs e)
         {
-            IconPath.Fill = new SolidColorBrush(Colors.LightBlue);
+            IconPath.Fill = new SolidColorBrush(Colors.Crimson);
         }
 
         private void Setting_Icon_Leave(object sender, MouseEventArgs e)
         {
             IconPath.Fill = new SolidColorBrush(Colors.White);
+        }
+
+        private void OpenRunners(object sender, MouseEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

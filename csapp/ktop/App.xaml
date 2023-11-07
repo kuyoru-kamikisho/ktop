@@ -5,6 +5,8 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <SolidColorBrush x:Key="app_bgcolor">#9928272B</SolidColorBrush>
+            <SolidColorBrush x:Key="app_bordercolor">#32ffffff</SolidColorBrush>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/icons/IconDictionary.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>

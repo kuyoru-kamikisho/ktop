@@ -1,5 +1,68 @@
 {
-  "sites": [],
-  "cmds": [],
-  "crons": []
+  "sites": [
+    {
+      "title": "网站一",
+      "url": "",
+      "type": "in"
+    },
+    {
+      "title": "网站二",
+      "url": "",
+      "type": "out"
+    },
+    {
+      "title": "网站三",
+      "url": "",
+      "type": "normal"
+    },
+    {
+      "group": "组一",
+      "sites": [
+        {
+          "title": "网站一",
+          "url": "",
+          "type": "in"
+        },
+        {
+          "title": "网站二",
+          "url": "",
+          "type": "out"
+        }
+      ]
+    }
+  ],
+  "cmds": [
+    {
+      "title": "20s后关机",
+      "cmd": "shutdown -s -t 20",
+      "type": "normal"
+    },
+    {
+      "title": "2s后强制关机",
+      "cmd": "shutdown -s -f -t 2",
+      "type": "danger"
+    },
+    {
+      "group": "系统",
+      "cmds": [
+        {
+          "title": "2s后强制关机",
+          "cmd": "shutdown -s -f -t 2",
+          "type": "danger"
+        }
+      ]
+    }
+  ],
+  "crons": [
+    {
+      "name": "一小时后打游戏",
+      "time": 3600,
+      "loop": false
+    },
+    {
+      "name": "每小时后提醒",
+      "time": 3600,
+      "loop": true
+    }
+  ]
 }
