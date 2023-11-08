@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ktop", "ktop.csproj", "{51A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{381DB792-CF0F-417F-A82E-4ECE662613E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "layout2", "..\layout2\layout2.csproj", "{737B003A-1BC8-4548-B89C-FB852503BEC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ktop2", "..\layout2\ktop2.csproj", "{737B003A-1BC8-4548-B89C-FB852503BEC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

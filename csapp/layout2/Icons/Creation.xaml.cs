@@ -13,16 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ktop2
+namespace ktop2.Icons
 {
     /// <summary>
-    /// Sites.xaml 的交互逻辑
+    /// Creation.xaml 的交互逻辑
     /// </summary>
-    public partial class SitesPage : Page
+    public partial class Creation : UserControl
     {
-        public SitesPage()
+        public static readonly DependencyProperty FillProperty =
+            DependencyProperty.Register("Fill", typeof(Brush), typeof(Creation), new PropertyMetadata(new SolidColorBrush(Colors.Black)));
+        public Creation()
         {
             InitializeComponent();
+        }
+        public Brush Fill
+        {
+            get { return (Brush)GetValue(FillProperty); }
+            set { SetValue(FillProperty, value); }
         }
     }
 }

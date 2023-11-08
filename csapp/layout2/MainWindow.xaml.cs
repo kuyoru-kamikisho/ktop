@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace layout2
+namespace ktop2
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,15 +23,6 @@ namespace layout2
         public MainWindow()
         {
             InitializeComponent();
-        }
-        private void showsites(object sender, MouseEventArgs e)
-        {
-            frame1.Navigate(new SitesPage());
-        }
-
-        private void closesites(object sender, MouseEventArgs e)
-        {
-            frame1.Navigate(null);
         }
     }
 }

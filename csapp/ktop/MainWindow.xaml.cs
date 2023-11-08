@@ -45,8 +45,6 @@ namespace ktop
 
             this.Left = Store.__config__.x;
             this.Top = Store.__config__.y;
-            this.Width = Store.__config__.width;
-            this.Height = Store.__config__.height;
 
             // 数据绑定区域
             var deviceInfo = new DeviceInfo();

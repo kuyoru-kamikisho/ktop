@@ -5,7 +5,8 @@
     "time": "1500",
     "type": "loop",
     "nextdelay": 300,
-    "autorunby": null
+    "autorunby": null,
+    "runkit": ""
   },
   {
     "id": "toresk",
@@ -13,22 +14,25 @@
     "time": "300",
     "type": "passive",
     "nextdelay": null,
-    "autorunby": "tomato"
+    "autorunby": "tomato",
+    "runkit": ""
   },
   {
     "id": "taobao",
     "name": "晚间整点秒杀活动购物啦",
     "time": "23:55:00",
     "type": "clock",
-    "nextdelay":null,
-    "autorunby": null
+    "nextdelay": null,
+    "autorunby": null,
+    "runkit": ""
   },
   {
     "id": "sign-in",
-    "name": "每周二下午十点提示",
-    "time": "2023-11-07T10:14:59.638Z",
-    "type": "clock",
+    "name": "每月每周二的下午十点提示",
+    "time": "0 22 * * 2",
+    "type": "crontab",
     "nextdelay": null,
-    "autorunby": null
+    "autorunby": null,
+    "runkit": ""
   }
 ]

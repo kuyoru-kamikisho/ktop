@@ -7,15 +7,33 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Icons\Creation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Icons\Play.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="SitesPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Icons\Creation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Icons\Play.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SitesPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Styles.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

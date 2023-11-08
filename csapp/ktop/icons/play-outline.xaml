@@ -1,1 +1,1 @@
-<DrawingImage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"><DrawingImage.Drawing><GeometryDrawing Brush="#000000" Geometry="M8.5,8.64L13.77,12L8.5,15.36V8.64M6.5,5V19L17.5,12" /></DrawingImage.Drawing></DrawingImage>
+<Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="24" Height="24"><Path Fill="#000000" Data="M8.5,8.64L13.77,12L8.5,15.36V8.64M6.5,5V19L17.5,12" /></Canvas>
