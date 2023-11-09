@@ -46,6 +46,18 @@ namespace ktop2.KControls
     /// </summary>
     public class KBtn : Button
     {
+
+
+        public Brush Foreground
+        {
+            get { return (Brush)GetValue(ForegroundProperty); }
+            set { SetValue(ForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ForegroundProperty =
+            DependencyProperty.Register("Foreground", typeof(Brush), typeof(KBtn), new PropertyMetadata(new SolidColorBrush(Colors.Black)));
+
+
         static KBtn()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(KBtn), new FrameworkPropertyMetadata(typeof(KBtn)));

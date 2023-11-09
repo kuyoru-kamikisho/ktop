@@ -18,8 +18,8 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <StackPanel Background="{StaticResource app_bgcolor}" Width="96" Orientation="Horizontal">
-                <Grid Width="96">
+            <StackPanel Background="{StaticResource app_bgcolor}" Width="92" Orientation="Horizontal">
+                <Grid Width="92">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="21*"/>
                         <ColumnDefinition Width="38*"/>
@@ -49,15 +49,44 @@
         </StackPanel>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="96"/>
+                <ColumnDefinition Width="92"/>
                 <ColumnDefinition Width="2"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Background="{StaticResource app_bgcolor}">
-                
+            <Grid x:Name="MenuBar" 
+                  Grid.Column="0"
+                  Background="{StaticResource app_bgcolor}">
+                <Border Padding="0,8">
+                    <StackPanel>
+                        <kct:KSBtn Height="24" Padding="10,5,5,5" Data="{StaticResource path_web}" TColor="White" Text="网站"/>
+                        <kct:KSBtn Height="24" Padding="10,5,5,5" Data="{StaticResource path_play}" TColor="White" Text="命令"/>
+                        <kct:KSBtn Height="24" Padding="10,5,5,5" Data="{StaticResource path_timerrun}" TColor="White" Text="任务"/>
+                        <kct:KSBtn Height="24" Padding="10,5,5,5" Data="{StaticResource path_vpn}" TColor="White" Text="代理"/>
+                        <kct:KSBtn Height="24" Padding="10,5,5,5" Data="{StaticResource path_cog}" TColor="White" Text="设置"/>
+                    </StackPanel>
+                </Border>
             </Grid>
-            <Grid Grid.Column="2" Background="{StaticResource app_bgcolor}">
-                
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="178*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="28*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Background="{StaticResource app_bgcolor}">
+                    <Frame x:Name="FrameA"></Frame>
+                </Grid>
+                <Grid Grid.Row="2" Background="{StaticResource app_bgcolor}">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Padding="7">
+                            <kco:TextBox Fill="White"/>
+                        </Border>
+                        <TextBlock VerticalAlignment="Center"
+                                   TextTrimming="CharacterEllipsis"
+                                   Text="444"
+                                   FontSize="10"
+                                   Width="326"/>
+                    </StackPanel>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>
