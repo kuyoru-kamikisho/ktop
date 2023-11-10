@@ -80,7 +80,8 @@
                         <Border Padding="7">
                             <kco:TextBox Fill="White"/>
                         </Border>
-                        <TextBlock VerticalAlignment="Center"
+                        <TextBlock x:Name="info_block" 
+                                   VerticalAlignment="Center"
                                    TextTrimming="CharacterEllipsis"
                                    Text="444"
                                    FontSize="10"

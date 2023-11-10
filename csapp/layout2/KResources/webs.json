@@ -1,0 +1,32 @@
+﻿[
+  {
+    "group": "工具",
+    "childs": [
+      {
+        "name": "谷歌邮箱",
+        "url": "https://mail.google.com/mail/",
+        "outlink": true
+      },
+      {
+        "name": "腾讯邮箱",
+        "url": "https://mail.qq.com/",
+        "outlink": false
+      },
+      {
+        "name": "谷歌翻译",
+        "url": "https://translate.google.com/",
+        "outlink": true
+      },
+      {
+        "name": "百度翻译",
+        "url": "https://fanyi.baidu.com/",
+        "outlink": false
+      },
+      {
+        "name": "腾讯云",
+        "url": "https://cloud.tencent.com/",
+        "outlink": false
+      }
+    ]
+  }
+]
