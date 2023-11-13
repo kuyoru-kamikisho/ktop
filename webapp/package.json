@@ -1,8 +1,8 @@
 {
   "name": "ktop",
   "productName": "ktop",
-  "version": "1.0.0",
-  "description": "Small tool to monito the cpu memroy of windows system",
+  "version": "2.0.0",
+  "description": "Small tool to monitor the cpu memory of windows system.",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
@@ -41,6 +41,7 @@
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.3.67",
+    "axios": "^1.6.1",
     "electron-squirrel-startup": "^1.0.0",
     "json2yaml": "^1.1.0",
     "pinia": "^2.1.6",

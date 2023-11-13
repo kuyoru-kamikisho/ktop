@@ -4,37 +4,13 @@
     transparent: true
   main: 
     title: "ktop"
-    width: 80
-    height: 28
+    width: 542
+    height: 300
     bgcolor: "transparent"
     alwaysOnTop: true
-    opendevtool: false
+    opendevtool: true
     resizable: false
     bgimage: ""
     position: 
-      - 1242
-      - 709
-  cpu: 
-    textsize: "12px"
-    textsizeh: "12px"
-    texttypes: ""
-    textcolor: "white"
-    textcolorh: "white"
-    textbold: "400"
-    textboldh: "400"
-    bgcolor: "rgba(0,0,0,.42)"
-    bgcolorh: "rgba(0,0,0)"
-    opacity: 1
-    radius: 0
-  memory: 
-    textsize: "12px"
-    textsizeh: "12px"
-    texttypes: ""
-    textcolor: "white"
-    textcolorh: "white"
-    textbold: "400"
-    textboldh: "400"
-    bgcolor: "rgba(0,0,0,.48)"
-    bgcolorh: "rgba(0,0,0)"
-    opacity: 1
-    radius: 0
+      - 290
+      - 309
