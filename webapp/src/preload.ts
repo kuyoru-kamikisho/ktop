@@ -1,28 +1,46 @@
-// See the Electron documentation for details on how to use preload scripts:
-// https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
-
 import {contextBridge, ipcRenderer} from 'electron'
 
-export function cpuUsage(callback: any) {
+function cpuUsage(callback: any) {
     ipcRenderer.on('cpu-usage', callback)
 }
 
-export function appConfig(callback: any) {
+function appConfig(callback: any) {
     ipcRenderer.on('app-config', callback)
 }
 
-export function setWindowPosition(offsetX: number, offsetY: number) {
+function setWindowPosition(offsetX: number, offsetY: number) {
     ipcRenderer.send('set-window-position', offsetX, offsetY)
 }
-export function mouseAction(e:string) {
+
+function mouseAction(e: string) {
     ipcRenderer.send('mouse-action', e)
 }
 
-export const apis = {
+function loadSearchEngine() {
+    return ipcRenderer.invoke('load-search-engine')
+}
+
+function getSites() {
+    return ipcRenderer.invoke('get-sites')
+}
+
+function openurl(url: string) {
+    ipcRenderer.send('openurl', url)
+}
+
+function changeExPro(b: boolean) {
+    ipcRenderer.send('expro', b)
+}
+
+const apis = {
     cpuUsage,
     appConfig,
     setWindowPosition,
-    mouseAction
+    mouseAction,
+    loadSearchEngine,
+    openurl,
+    getSites,
+    changeExPro
 };
 
 

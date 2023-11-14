@@ -1,7 +1,7 @@
 <template>
   <div class="k-infos">
     <svg-icon size="16" type="mdi" :path="mdiTextBoxEditOutline"></svg-icon>
-    <span class="msg-box" v-text="msgBox"></span>
+    <span class="msg-box" v-html="msgBox"></span>
   </div>
 </template>
 
@@ -26,6 +26,13 @@ const {msgBox} = storeToRefs(useApp())
     text-overflow: ellipsis;
     margin-left: 8px;
     overflow: hidden;
+  }
+
+  code {
+    background-color: black;
+    color: yellowgreen;
+    padding: 0 4px;
+    font-family: Consolas,fantasy;
   }
 }
 </style>

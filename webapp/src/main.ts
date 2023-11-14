@@ -3,6 +3,8 @@ import path from 'path';
 import {sendCpuAvg} from "./utils/sender/cpus";
 import {sendConfig} from "./utils/sender/theme";
 import {setWindowPosition} from "./utils/receiver/setWindowPosition";
+import {handleSearchEngine, handleSitesReader} from "./utils/handles/getters";
+import {listenExPro, listenOpenUrl} from "./utils/receiver/smalls";
 
 let tray: null | Tray = null;
 const appIconPath = './resources/favicon.ico'
@@ -16,14 +18,13 @@ const createWindow = () => {
     readYaml('./resources/config.yaml', function (err: any, config: any) {
         if (err) {
             app.quit()
-            throw err;
         }
 
-        const mainWindow = new BrowserWindow({
+        const __mwd = new BrowserWindow({
             icon: appIconPath,
             title: config.main.title,
-            width: config.main.width,
-            height: config.main.height,
+            width: 96,
+            height: 28,
             resizable: config.main.resizable,
             frame: config.build.frame,
             alwaysOnTop: config.main.alwaysOnTop,
@@ -35,19 +36,23 @@ const createWindow = () => {
 
         // and load the index.html of the app.
         if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-            mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
+            __mwd.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
         } else {
-            mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
+            __mwd.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
         }
 
         if (config.main.opendevtool)
-            mainWindow.webContents.openDevTools();
-        sendCpuAvg(mainWindow)
-        mainWindow.setPosition(config.main.position[0], config.main.position[1])
-        mainWindow.setSkipTaskbar(true)
-        mainWindow.show()
-        sendConfig(mainWindow, config)
-        setWindowPosition(mainWindow, config)
+            __mwd.webContents.openDevTools();
+        sendCpuAvg(__mwd)
+        __mwd.setPosition(config.main.position[0], config.main.position[1])
+        __mwd.setSkipTaskbar(true)
+        __mwd.show()
+        sendConfig(__mwd, config)
+        setWindowPosition(__mwd, config)
+        handleSearchEngine()
+        listenOpenUrl()
+        handleSitesReader()
+        listenExPro(__mwd, config)
     })
 };
 

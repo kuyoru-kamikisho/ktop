@@ -34,7 +34,7 @@ function chooseM(i: number) {
 </script>
 
 <style lang="scss">
-ul {
+.k-menu {
   padding: 8px 0;
 
   li {

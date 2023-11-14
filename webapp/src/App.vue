@@ -1,6 +1,6 @@
 <template>
   <div class="ktop-app">
-    <div class="item mts">
+    <div @mouseenter="exPro=true" class="item mts">
       <svg-icon size="14" type="mdi" :path="mdiSwordCross "></svg-icon>
     </div>
     <i class="divider ver"></i>
@@ -9,7 +9,7 @@
     <div class="item memory">{{ memory }}</div>
   </div>
   <div class="ktop-plugins">
-      <k-menus></k-menus>
+    <k-menus></k-menus>
     <div class="tool-window">
       <k-tools></k-tools>
       <k-infos></k-infos>
@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import SvgIcon from '@jamescoyle/vue-icon';
 import {mdiSwordCross} from '@mdi/js';
-import {computed, onMounted, ref} from "vue";
+import {onMounted, ref, watch} from "vue";
 import {storeToRefs} from "pinia";
 import useApp from "./store/useApp";
 import {registerWindowMove} from "./utils/pageToWindow/registerWindowMove";
@@ -30,7 +30,11 @@ import KInfos from "./piece/KInfos.vue";
 
 const cpu = ref('0')
 const memory = ref('0')
-const {appConfig} = storeToRefs(useApp());
+const {appConfig, searchEngines, sites, exPro} = storeToRefs(useApp());
+
+watch(exPro, n => {
+  window.electronAPI.changeExPro(n)
+})
 
 onMounted(() => {
   window.electronAPI.cpuUsage((e: any, c: number, m: number) => {
@@ -39,6 +43,17 @@ onMounted(() => {
   })
   window.electronAPI.appConfig((e: any, o: any) => {
     appConfig.value = o
+  })
+  window.electronAPI.loadSearchEngine().then((o: any) => {
+    searchEngines.value = o
+  })
+  window.electronAPI.getSites().then((o: any) => {
+    if (o[0])
+      o[0].active = true
+    sites.value = o
+  })
+  document.addEventListener('mouseleave', () => {
+    exPro.value = false
   })
   registerWindowMove()
 })
@@ -111,21 +126,43 @@ $hvc-color: rgba(252, 32, 64, 0.95);
   .k-infos {
     background-color: $app-color;
   }
-  .k-menu{
+
+  .k-menu {
     width: $monitor-width;
   }
-  .tool-window{
+
+  .tool-window {
     width: calc(100% - $monitor-width);
     padding-left: 2px;
     display: flex;
     flex-direction: column;
   }
-  .k-tools{
-    height: calc(100% - 34px);
+
+  .k-tools {
+    padding: 12px;
+    height: calc(100% - 58px);
   }
-  .k-infos{
+
+  .k-infos {
     margin-top: 2px;
     height: 32px;
+    font-size: 11px;
+  }
+}
+
+.k-fct-block {
+  background-color: rgba(0, 0, 0, 0.72);
+  margin: 4px 8px 4px 2px;
+  width: 9.2em;
+  box-sizing: border-box;
+  letter-spacing: .2em;
+  padding: 0 0 0 1.37em;
+  display: inline-block;
+  transition: all .2s ease;
+
+  &:hover {
+    color: black;
+    background-color: #bfff21;
   }
 }
 </style>

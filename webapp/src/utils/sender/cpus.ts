@@ -1,13 +1,15 @@
 import * as os from "os";
 import {BrowserWindow} from "electron";
 
+const TIME = 1520
+
 export function sendCpuAvg(windowI: BrowserWindow) {
     setInterval(() => {
         const memory_usage = 1 - os.freemem() / os.totalmem();
         getCPUUsage(cpu_usage => {
             windowI.webContents.send('cpu-usage', cpu_usage, memory_usage);
         })
-    }, 1000)
+    }, TIME)
 }
 
 
@@ -64,5 +66,5 @@ function getCPUUsage(callback: { (usage: number): void }, free?: boolean) {
             callback(perc);
         else
             callback((1 - perc));
-    }, 1000);
+    }, TIME);
 }
