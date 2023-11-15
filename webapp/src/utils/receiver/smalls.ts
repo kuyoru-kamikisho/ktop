@@ -1,7 +1,8 @@
-import {ipcMain, screen} from "electron";
-import type {BrowserWindow} from 'electron'
+import {ipcMain, screen, BrowserWindow, dialog} from "electron";
 import fs from "fs";
+
 const yaml = require('json2yaml')
+const {execSync} = require('child_process');
 
 const {exec} = require('child_process');
 
@@ -40,11 +41,19 @@ export function listenExPro(mw: BrowserWindow, cfg: any) {
 }
 
 export function watchPosition(windowI: BrowserWindow, config: any) {
-    windowI.on('moved',()=>{
+    windowI.on('moved', () => {
         config.main.position = windowI.getPosition()
         const yamlText = yaml.stringify(config);
         fs.writeFile('./resources/config.yaml', yamlText, 'utf-8', (err: any) => {
             return;
         })
     })
+}
+
+export function runCmd(s: string) {
+    try {
+        return execSync(s)
+    } catch (e) {
+        dialog.showErrorBox('执行失败', '无法执行此命令，请检查命令是否正确')
+    }
 }

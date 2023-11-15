@@ -1,9 +1,10 @@
-import {app, Menu, nativeImage, Tray, BrowserWindow} from 'electron';
+import {app, Menu, nativeImage, Tray, BrowserWindow, dialog} from 'electron';
 import path from 'path';
 import {sendCpuAvg} from "./utils/sender/cpus";
 import {sendConfig} from "./utils/sender/theme";
 import {handleSearchEngine, handleSitesReader} from "./utils/handles/getters";
 import {listenExPro, listenOpenUrl, watchPosition} from "./utils/receiver/smalls";
+import * as process from "process";
 
 let __mwd: BrowserWindow;
 let tray: null | Tray = null;
@@ -18,6 +19,7 @@ const createWindow = () => {
     readYaml('./resources/config.yaml', function (err: any, config: any) {
         if (err) {
             app.quit()
+            dialog.showErrorBox('错误', '未找到配置文件')
             return;
         }
 

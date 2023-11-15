@@ -55,13 +55,13 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-$app-color: rgba(0, 0, 0, 0.48);
+$app-color: rgba(0, 0, 0, 0.42);
 $monitor-width: 96px;
 $monitor-height: 28px;
 $divider-color: rgba(255, 255, 255, 0.12);
-$font-color: rgba(255, 237, 225, 0.95);
+$font-color: rgba(255, 237, 225, 0.96);
 $font-size: 12px;
-$hvc-color: rgba(252, 32, 64, 0.95);
+$hvc-color: rgba(252, 32, 64, 0.96);
 
 .divider {
   display: block;
@@ -101,6 +101,10 @@ $hvc-color: rgba(252, 32, 64, 0.95);
     &:hover {
       color: $hvc-color;
     }
+  }
+
+  .divider {
+    -webkit-app-region: drag;
   }
 
   .cpu, .memory {
