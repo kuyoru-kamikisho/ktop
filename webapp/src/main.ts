@@ -18,6 +18,7 @@ const createWindow = () => {
     readYaml('./resources/config.yaml', function (err: any, config: any) {
         if (err) {
             app.quit()
+            return;
         }
 
         __mwd = new BrowserWindow({
