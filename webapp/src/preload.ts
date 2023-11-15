@@ -8,14 +8,6 @@ function appConfig(callback: any) {
     ipcRenderer.on('app-config', callback)
 }
 
-function setWindowPosition(offsetX: number, offsetY: number) {
-    ipcRenderer.send('set-window-position', offsetX, offsetY)
-}
-
-function mouseAction(e: string) {
-    ipcRenderer.send('mouse-action', e)
-}
-
 function loadSearchEngine() {
     return ipcRenderer.invoke('load-search-engine')
 }
@@ -35,8 +27,6 @@ function changeExPro(b: boolean) {
 const apis = {
     cpuUsage,
     appConfig,
-    setWindowPosition,
-    mouseAction,
     loadSearchEngine,
     openurl,
     getSites,

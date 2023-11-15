@@ -1,6 +1,6 @@
 <template>
   <div class="ktop-app">
-    <div @mouseenter="exPro=true" class="item mts">
+    <div @mouseenter="exPro=!exPro" class="item mts">
       <svg-icon size="14" type="mdi" :path="mdiSwordCross "></svg-icon>
     </div>
     <i class="divider ver"></i>
@@ -8,7 +8,7 @@
     <i class="divider ver"></i>
     <div class="item memory">{{ memory }}</div>
   </div>
-  <div class="ktop-plugins">
+  <div v-if="exPro" class="ktop-plugins">
     <k-menus></k-menus>
     <div class="tool-window">
       <k-tools></k-tools>
@@ -23,7 +23,6 @@ import {mdiSwordCross} from '@mdi/js';
 import {onMounted, ref, watch} from "vue";
 import {storeToRefs} from "pinia";
 import useApp from "./store/useApp";
-import {registerWindowMove} from "./utils/pageToWindow/registerWindowMove";
 import KMenus from "./piece/KMenus.vue";
 import KTools from "./piece/KTools.vue";
 import KInfos from "./piece/KInfos.vue";
@@ -52,10 +51,6 @@ onMounted(() => {
       o[0].active = true
     sites.value = o
   })
-  document.addEventListener('mouseleave', () => {
-    exPro.value = false
-  })
-  registerWindowMove()
 })
 </script>
 
@@ -111,6 +106,7 @@ $hvc-color: rgba(252, 32, 64, 0.95);
   .cpu, .memory {
     width: 38%;
     transition: .2s ease;
+    -webkit-app-region: drag;
   }
 }
 

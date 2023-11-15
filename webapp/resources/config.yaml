@@ -4,13 +4,15 @@
     transparent: true
   main: 
     title: "ktop"
-    width: 542
-    height: 300
+    maxWidth: 542
+    maxHeight: 300
+    minWidth: 96
+    minHeight: 28
     bgcolor: "transparent"
     alwaysOnTop: true
     opendevtool: true
     resizable: false
     bgimage: ""
     position: 
-      - 918
-      - 184
+      - 725
+      - 149

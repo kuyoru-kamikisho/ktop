@@ -2,10 +2,10 @@ import {app, Menu, nativeImage, Tray, BrowserWindow} from 'electron';
 import path from 'path';
 import {sendCpuAvg} from "./utils/sender/cpus";
 import {sendConfig} from "./utils/sender/theme";
-import {setWindowPosition} from "./utils/receiver/setWindowPosition";
 import {handleSearchEngine, handleSitesReader} from "./utils/handles/getters";
-import {listenExPro, listenOpenUrl} from "./utils/receiver/smalls";
+import {listenExPro, listenOpenUrl, watchPosition} from "./utils/receiver/smalls";
 
+let __mwd: BrowserWindow;
 let tray: null | Tray = null;
 const appIconPath = './resources/favicon.ico'
 const readYaml = require('read-yaml');
@@ -20,11 +20,11 @@ const createWindow = () => {
             app.quit()
         }
 
-        const __mwd = new BrowserWindow({
+        __mwd = new BrowserWindow({
             icon: appIconPath,
             title: config.main.title,
-            width: 96,
-            height: 28,
+            width: config.main.minWidth,
+            height: config.main.minHeight,
             resizable: config.main.resizable,
             frame: config.build.frame,
             alwaysOnTop: config.main.alwaysOnTop,
@@ -48,10 +48,10 @@ const createWindow = () => {
         __mwd.setSkipTaskbar(true)
         __mwd.show()
         sendConfig(__mwd, config)
-        setWindowPosition(__mwd, config)
         handleSearchEngine()
         listenOpenUrl()
         handleSitesReader()
+        watchPosition(__mwd, config)
         listenExPro(__mwd, config)
     })
 };
@@ -61,11 +61,16 @@ app.on('ready', createWindow);
 app.whenReady().then(() => {
     tray = new Tray(appIconPath);
     const menu = Menu.buildFromTemplate([
-        {label: '退出', type: 'normal', role: 'quit'}
+        {
+            label: '鼠标穿透', type: 'checkbox', click: menuItem => {
+                __mwd.setIgnoreMouseEvents(menuItem.checked)
+            }
+        },
+        {label: '退出', type: 'normal', role: 'quit'},
     ]);
     tray.setContextMenu(menu)
     tray.setTitle('ktop')
-    app.dock.hide();
+    app.dock?.hide();
 });
 
 app.on('window-all-closed', () => {
