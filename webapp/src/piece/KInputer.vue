@@ -1,6 +1,7 @@
 <template>
   <fieldset class="k-inputer">
-    <input @focusout="emits('unFocus')" ref="input" v-model="vmmi" spellcheck="false" type="text">
+    <input @focusout="emits('unFocus')" ref="input" :placeholder="placeHolder" v-model="vmmi" spellcheck="false"
+           type="text">
     <div class="icon-field">
       <svg-icon class="c-pointer" @click="clear" size="16" type="mdi" :path="mdiWindowClose"></svg-icon>
       <slot name="append-icon"></slot>
@@ -15,7 +16,8 @@ import {mdiWindowClose} from '@mdi/js';
 
 const emits = defineEmits(['update:modelValue', 'unFocus']);
 const props = defineProps({
-  modelValue: String
+  modelValue: String,
+  placeHolder: String
 });
 const input = ref()
 

@@ -1,0 +1,5 @@
+---
+- id: 0
+  name: 10分钟后关机
+  time: -dm 10
+  bind: shutdown_0

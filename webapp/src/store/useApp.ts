@@ -6,7 +6,6 @@ export default defineStore('useApp', {
     state: () => ({
         exPro: false,
         appConfig: null as any,
-        mode: 0,
         msgBox: msgBoxI,
         searchText: '',
         searchMode: 0,

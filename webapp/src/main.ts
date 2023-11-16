@@ -4,7 +4,6 @@ import {sendCpuAvg} from "./utils/sender/cpus";
 import {sendConfig} from "./utils/sender/theme";
 import {handleSearchEngine, handleSitesReader} from "./utils/handles/getters";
 import {listenExPro, listenOpenUrl, watchPosition} from "./utils/receiver/smalls";
-import * as process from "process";
 
 let __mwd: BrowserWindow;
 let tray: null | Tray = null;
@@ -18,8 +17,8 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
     readYaml('./resources/config.yaml', function (err: any, config: any) {
         if (err) {
-            app.quit()
             dialog.showErrorBox('错误', '未找到配置文件')
+            app.quit()
             return;
         }
 

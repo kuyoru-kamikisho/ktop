@@ -11,10 +11,10 @@ import KCron from "./KCron.vue";
 import KProxy from "./KProxy.vue";
 import KSetting from "./KSetting.vue";
 import {storeToRefs} from "pinia";
-import useApp from "../store/useApp";
 import {computed} from "vue";
+import useMenu from "../store/useMenu";
 
-const {mode} = storeToRefs(useApp())
+const {mode} = storeToRefs(useMenu())
 const view = computed(() => {
   switch (mode.value) {
     case 0:

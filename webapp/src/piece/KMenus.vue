@@ -1,6 +1,6 @@
 <template>
   <ul class="k-menu">
-    <li :class="{active:i.active}" v-for="(i,x) in menus" :key="x" @mouseenter="i.click(x)">
+    <li :class="{active:i.active}" v-for="(i,x) in menus" :key="x" @mouseenter="useMenu().chooseM(x)">
       <svg-icon size="16" type="mdi" :path="i.icon"></svg-icon>
       <span class="ctxt" v-text="i.title"></span>
     </li>
@@ -8,29 +8,11 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from "vue";
 import SvgIcon from '@jamescoyle/vue-icon';
-import {mdiWeb, mdiVpn, mdiPlayOutline, mdiTimerCogOutline, mdiCogOutline} from '@mdi/js';
 import {storeToRefs} from "pinia";
-import useApp from "../store/useApp";
+import useMenu from "../store/useMenu";
 
-const {mode} = storeToRefs(useApp())
-
-const menus = ref([
-  {active: true, title: '网站', icon: mdiWeb, click: (i: number) => chooseM(i)},
-  {active: false, title: '命令', icon: mdiPlayOutline, click: (i: number) => chooseM(i)},
-  {active: false, title: '定时', icon: mdiTimerCogOutline, click: (i: number) => chooseM(i)},
-  {active: false, title: '代理', icon: mdiVpn, click: (i: number) => chooseM(i)},
-  {active: false, title: '设置', icon: mdiCogOutline, click: (i: number) => chooseM(i)},
-])
-
-function chooseM(i: number) {
-  menus.value.forEach(o => {
-    o.active = false
-  })
-  menus.value[i].active = true
-  mode.value = i
-}
+const {menus} = storeToRefs(useMenu())
 </script>
 
 <style lang="scss">

@@ -1,6 +1,7 @@
 <template>
   <k-inputer @keydown.tab.stop="tabKey"
              class="k-sites searcher"
+             place-holder="Ciallo～(∠·ω< )⌒★"
              @unFocus="useApp().resetMsgbox()"
              v-model="searchText"
              @keyup.enter="goSearch"
@@ -13,7 +14,7 @@
   </k-inputer>
   <div class="k-sites sites">
     <ul class="group-item">
-      <li :class="{active:i.active}" @mouseenter="mapTo(i)" v-for="(i,x) in sites" :key="x">
+      <li :class="{active:i.active}" @click="mapTo(i)" v-for="(i,x) in sites" :key="x">
         <span v-text="i.group"></span>
       </li>
     </ul>

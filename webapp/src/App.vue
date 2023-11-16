@@ -1,6 +1,6 @@
 <template>
   <div class="ktop-app">
-    <div @mouseenter="exPro=!exPro" class="item mts">
+    <div @click="sword" class="item mts">
       <svg-icon size="14" type="mdi" :path="mdiSwordCross "></svg-icon>
     </div>
     <i class="divider ver"></i>
@@ -52,6 +52,10 @@ onMounted(() => {
     sites.value = o
   })
 })
+
+function sword() {
+  exPro.value = !exPro.value
+}
 </script>
 
 <style lang="scss">
@@ -97,20 +101,20 @@ $hvc-color: rgba(252, 32, 64, 0.96);
 
   .mts {
     width: 22%;
+    -webkit-app-region: no-drag;
 
     &:hover {
       color: $hvc-color;
     }
   }
 
-  .divider {
+  .divider, .cpu, .memory {
     -webkit-app-region: drag;
   }
 
   .cpu, .memory {
     width: 38%;
     transition: .2s ease;
-    -webkit-app-region: drag;
   }
 }
 

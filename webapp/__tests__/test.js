@@ -1,11 +1,12 @@
-const {execSync} = require('child_process')
-
+var exec = require('child_process').exec;
 function runcmd(s) {
     try {
-        execSync(s)
-    } catch (e) {
-        console.log(e)
+        exec(s, function (error, stdout, stderr) {
+            console.log(stdout);
+        });
+    }
+    catch (e) {
+        console.log(e);
     }
 }
-
-runcmd('shutdown /s /f /t 300')
+runcmd('');
