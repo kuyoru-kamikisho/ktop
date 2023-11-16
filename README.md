@@ -78,3 +78,21 @@ z - - - - - 10 -
 
 ```
 
+## 致谢
+
+本项目的一些设计受到以下项目的启发，特此感谢：
+
+- [Hi_Hysteria](https://github.com/emptysuns/Hi_Hysteria)
+- [kamikisho_web](https://github.com/kuyoru-kamikisho/kamikisho/tree/4.x)
+- [v2rayN](https://github.com/2dust/v2rayN)
+
+## 常见问题
+
+#### 为什么我的电脑无法正常运行定时任务？
+
+ktop使用的定时字符串解析工具是由kamikisho亲自设计并开发的命令行工具[kcron](https://github.com/kuyoru-kamikisho/kcron)，
+为了让该工具被更多项目使用，
+`kcron`被设计为由c#开发的独立项目，
+因此如果您无法使用定时任务，
+请检查是否缺失了该软件，默认情况下是内置的，
+如果依然无法使用，请前往[kcron](https://github.com/kuyoru-kamikisho/kcron)查看文档。
