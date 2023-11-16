@@ -2,12 +2,12 @@
 - id: shutdown_0
   name: 立即关机
   cmd: shutdown /s /f /t 0
-  alert: true
+  send: true
 - id: open_task
   name: 打开任务管理器
   cmd: taskmgr
-  alert: false
+  send: false
 - id: win_control
   name: 打开控制面板
   cmd: control
-  alert: false
+  send: false
