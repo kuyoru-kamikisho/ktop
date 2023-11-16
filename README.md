@@ -42,9 +42,9 @@
 - [hysteria](https://github.com/apernet/hysteria)
 - [xray](https://github.com/XTLS/Xray-core)
 
-更新：默认情况下，ktop不会自动下载最新的 net core， 如果您需要使用特定版本的核心， 请自行下载并替换`proxys`目录下对应的可执行文件
+更新：默认情况下，ktop不会自动下载最新的 net core， 如果您需要使用特定版本的核心， 请自行下载并替换`runners`目录下对应的可执行文件
 
-在ktop的规划中不会内置任何 net core，这意味着想要通过ktop实现代理您需要自行下载，并且编辑`proxys`目录下对应的配置文件
+在ktop的规划中不会内置任何 net core，这意味着想要通过ktop实现代理您需要自行下载，并且编辑`runners`目录下对应的配置文件
 
 ### 定时器示例
 
