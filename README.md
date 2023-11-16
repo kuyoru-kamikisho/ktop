@@ -35,9 +35,9 @@
 - 非开发人员请不要改动`resources`目录下的`config.yaml`文件
 - 在游戏全屏模式下，您可以通过电脑托盘区域的小图标可以设置是否启用鼠标穿透模式
 
-#### 代理
+#### 执行器
 
-目前在规划中支持以下代理方式
+目前在规划中内置了以下执行器的模板
 
 - [hysteria](https://github.com/apernet/hysteria)
 - [xray](https://github.com/XTLS/Xray-core)
