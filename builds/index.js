@@ -48,6 +48,9 @@ const bdi = './out/ktop-win32-x64'
 moveResources(
     adi + '/resources',
     bdi + '/resources')
+moveResources(
+    adi + '/proxys',
+    bdi + '/proxys')
 deleteDirectory(adi + '/builds')
 deleteDirectory(adi + '/__tests__')
 deleteDirectory(adi + '/.idea')
@@ -55,3 +58,4 @@ deleteDirectory(adi + '/imgs')
 deleteDirectory(adi + '/src')
 deleteDirectory(adi + '/.eslintrc.js')
 deleteDirectory(adi + '/resources')
+deleteDirectory(adi + '/proxys')
