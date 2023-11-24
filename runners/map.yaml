@@ -1,0 +1,9 @@
+---
+- use: ./xray/xray.exe
+  name: xray
+  update: ./xray/update.js
+  exclusive: true
+  menus:
+    - HK_VMess: ""
+    - HK_VLess: ""
+
