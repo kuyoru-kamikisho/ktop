@@ -4,6 +4,7 @@ import {sendCpuAvg} from "./utils/sender/cpus";
 import {sendConfig} from "./utils/sender/theme";
 import {handleSearchEngine, handleSitesReader} from "./utils/handles/getters";
 import {listenExPro, listenOpenUrl, watchPosition} from "./utils/receiver/smalls";
+import {sendWindowBlur} from "./utils/sender/window";
 
 let __mwd: BrowserWindow;
 let tray: null | Tray = null;
@@ -50,6 +51,7 @@ const createWindow = () => {
         __mwd.setSkipTaskbar(true)
         __mwd.show()
         sendConfig(__mwd, config)
+        sendWindowBlur(__mwd, 'Main')
         handleSearchEngine()
         listenOpenUrl()
         handleSitesReader()

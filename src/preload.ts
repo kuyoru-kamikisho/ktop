@@ -8,6 +8,10 @@ function appConfig(callback: any) {
     ipcRenderer.on('app-config', callback)
 }
 
+function windowBlur(callback: any) {
+    ipcRenderer.on('window-blur', callback)
+}
+
 function loadSearchEngine() {
     return ipcRenderer.invoke('load-search-engine')
 }
@@ -25,11 +29,15 @@ function changeExPro(b: boolean) {
 }
 
 const apis = {
+    // send
     cpuUsage,
+    windowBlur,
     appConfig,
+    // invoke
     loadSearchEngine,
-    openurl,
     getSites,
+    // receive
+    openurl,
     changeExPro
 };
 

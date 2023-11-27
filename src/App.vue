@@ -40,6 +40,9 @@ onMounted(() => {
     cpu.value = (100 * c).toFixed(0)
     memory.value = (100 * m).toFixed(0)
   })
+  window.electronAPI.windowBlur((e: any, name: string) => {
+    exPro.value = false
+  })
   window.electronAPI.appConfig((e: any, o: any) => {
     appConfig.value = o
   })
