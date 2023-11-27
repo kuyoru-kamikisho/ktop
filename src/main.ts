@@ -58,32 +58,45 @@ const createWindow = () => {
     })
 };
 
-app.on('ready', createWindow);
+const gotTheLock = app.requestSingleInstanceLock();
+if (!gotTheLock) {
+    app.quit();
+} else {
+    app.on('second-instance', (event, commandLine, workingDirectory) => {
+        const mainWindow = BrowserWindow.getAllWindows()[0];
+        if (mainWindow) {
+            if (mainWindow.isMinimized()) mainWindow.restore();
+            mainWindow.focus();
+        }
+    });
 
-app.whenReady().then(() => {
-    tray = new Tray(appIconPath);
-    const menu = Menu.buildFromTemplate([
-        {
-            label: '鼠标穿透', type: 'checkbox', click: menuItem => {
-                __mwd.setIgnoreMouseEvents(menuItem.checked)
-            }
-        },
-        {label: '退出', type: 'normal', role: 'quit'},
-    ]);
-    tray.setContextMenu(menu)
-    tray.setTitle('ktop')
-    app.dock?.hide();
-});
+    app.on('ready', createWindow);
 
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
-        tray?.destroy();
-    }
-});
+    app.whenReady().then(() => {
+        tray = new Tray(appIconPath);
+        const menu = Menu.buildFromTemplate([
+            {
+                label: '鼠标穿透', type: 'checkbox', click: menuItem => {
+                    __mwd.setIgnoreMouseEvents(menuItem.checked)
+                }
+            },
+            {label: '退出', type: 'normal', role: 'quit'},
+        ]);
+        tray.setContextMenu(menu)
+        tray.setTitle('ktop')
+        app.dock?.hide();
+    });
 
-app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow();
-    }
-});
+    app.on('window-all-closed', () => {
+        if (process.platform !== 'darwin') {
+            app.quit();
+            tray?.destroy();
+        }
+    });
+
+    app.on('activate', () => {
+        if (BrowserWindow.getAllWindows().length === 0) {
+            createWindow();
+        }
+    });
+}

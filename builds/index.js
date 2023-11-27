@@ -6,9 +6,13 @@ function logBlue(s) {
 }
 
 function moveResources(dirA, dirB) {
-    if (!fs.existsSync(dirA) || !fs.existsSync(dirB)) {
-        logBlue('dirA or dirB not exist.\n' + dirA + '\n' + dirB)
+    if (!fs.existsSync(dirA)) {
+        logBlue('dirA not exist.\n' + dirA + '\n' + dirB)
         return;
+    }
+    if (!fs.existsSync(dirB)) {
+        logBlue('创建目录：' + dirB)
+        fs.mkdirSync(dirB, {recursive: true})
     }
     const resources = fs.readdirSync(dirA)
     resources.forEach((f) => {
