@@ -32,7 +32,6 @@ const {msgBox} = storeToRefs(useApp())
     background-color: black;
     color: yellowgreen;
     padding: 0 4px;
-    font-family: Consolas,fantasy;
   }
 }
 </style>

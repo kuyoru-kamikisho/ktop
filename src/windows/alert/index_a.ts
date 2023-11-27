@@ -30,5 +30,6 @@ export function createAlertWindow() {
         __alert.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/subpage/alert/index.html`));
     }
     __alert.setIgnoreMouseEvents(true);
-    __alert.setPosition(width - w_a, 60)
+    __alert.setPosition(width - w_a, 60);
+    __alert.webContents.openDevTools();
 }

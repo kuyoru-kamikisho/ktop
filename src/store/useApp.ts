@@ -2,6 +2,8 @@ import {defineStore} from "pinia";
 
 const msgBoxI = "欢迎使用 ktop ！";
 
+type AlertB = { title: string, text: string }
+
 export default defineStore('useApp', {
     state: () => ({
         exPro: false,
@@ -10,11 +12,12 @@ export default defineStore('useApp', {
         searchText: '',
         searchMode: 0,
         searchEngines: [],
-        sites: []
+        sites: [],
+        alerts: [] as AlertB[]
     }),
     actions: {
         shiftSearchEngine(n?: number) {
-            let len = this.searchEngines.length;
+            const len = this.searchEngines.length;
             if (len > 0) {
                 if (n === undefined) {
                     n = this.searchMode + 1 >= len
