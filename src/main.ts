@@ -5,6 +5,7 @@ import {sendConfig} from "./utils/sender/theme";
 import {handleSearchEngine, handleSitesReader} from "./utils/handles/getters";
 import {listenExPro, listenOpenUrl, watchPosition} from "./utils/receiver/smalls";
 import {sendWindowBlur} from "./utils/sender/window";
+import {createAlertWindow} from "./windows/alert/index_a";
 
 let __mwd: BrowserWindow;
 let tray: null | Tray = null;
@@ -57,6 +58,7 @@ const createWindow = () => {
         handleSitesReader()
         watchPosition(__mwd, config)
         listenExPro(__mwd, config)
+        createAlertWindow()
     })
 };
 

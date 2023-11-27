@@ -21,7 +21,7 @@ li {
     list-style: none;
 }
 
-#app {
+#app, #alert-window {
     direction: ltr;
     flex: 1 1 auto;
     max-height: 100%;
@@ -33,17 +33,19 @@ li {
 }
 
 ::-webkit-scrollbar {
-    background-color: rgba(8,4,16,0.05);
+    background-color: rgba(8, 4, 16, 0.05);
     width: 3px;
     height: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(255,33,51,0.88);
+    background-color: rgba(255, 33, 51, 0.88);
 }
-::-webkit-scrollbar-thumb:hover{
+
+::-webkit-scrollbar-thumb:hover {
     background-color: whitesmoke;
 }
+
 ::-webkit-scrollbar-corner {
     background-color: transparent;
 }
