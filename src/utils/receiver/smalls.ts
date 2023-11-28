@@ -49,11 +49,3 @@ export function watchPosition(windowI: BrowserWindow, config: any) {
         })
     })
 }
-
-export function runCmd(s: string) {
-    try {
-        return execSync(s)
-    } catch (e) {
-        dialog.showErrorBox('执行失败', '无法执行此命令，请检查命令是否正确')
-    }
-}

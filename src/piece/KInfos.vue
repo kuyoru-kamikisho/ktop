@@ -19,6 +19,7 @@ const {msgBox} = storeToRefs(useApp())
   display: flex;
   align-items: center;
   padding: 0 12px;
+  letter-spacing: 0.11em;
 
   .msg-box {
     display: inline-block;

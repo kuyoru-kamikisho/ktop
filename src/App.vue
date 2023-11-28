@@ -29,7 +29,7 @@ import KInfos from "./piece/KInfos.vue";
 
 const cpu = ref('0')
 const memory = ref('0')
-const {appConfig, searchEngines, sites, exPro} = storeToRefs(useApp());
+const {appConfig, searchEngines, cmds, crons, sites, exPro} = storeToRefs(useApp());
 
 watch(exPro, n => {
   window.electronAPI.changeExPro(n)
@@ -41,7 +41,8 @@ onMounted(() => {
     memory.value = (100 * m).toFixed(0)
   })
   window.electronAPI.windowBlur((e: any, name: string) => {
-    exPro.value = false
+    // TODO 要修改回去
+    // exPro.value = false
   })
   window.electronAPI.appConfig((e: any, o: any) => {
     appConfig.value = o
@@ -53,6 +54,14 @@ onMounted(() => {
     if (o[0])
       o[0].active = true
     sites.value = o
+  })
+  window.electronAPI.getCmds().then((o: any) => {
+    if (o[0])
+      cmds.value = o
+  })
+  window.electronAPI.getCrons().then((o: any) => {
+    if (o[0])
+      crons.value = o
   })
 })
 
@@ -148,6 +157,7 @@ $hvc-color: rgba(252, 32, 64, 0.96);
   .k-tools {
     padding: 12px;
     height: calc(100% - 58px);
+    overflow: auto;
   }
 
   .k-infos {

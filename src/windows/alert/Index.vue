@@ -7,10 +7,10 @@
       <transition name="fade">
         <div v-show="show_text" class="inner">
           <div class="title">
-            <span v-text="title"></span>
+            <span v-text="alertN?.title"></span>
           </div>
           <div class="content">
-            <p v-text="content"></p>
+            <p v-text="alertN?.text"></p>
           </div>
         </div>
       </transition>
@@ -20,17 +20,12 @@
 
 <script lang="ts" setup>
 import {onMounted, ref, watch} from "vue";
-import {storeToRefs} from "pinia";
-import useApp from "../../store/useApp";
 
 let direction = ref<'close' | 'open'>()
 const show_base_1 = ref(false)
 const show_base_2 = ref(false)
 const show_text = ref(false)
-const title = ref('')
-const content = ref('')
-
-const {alertN} = storeToRefs(useApp())
+const alertN = ref()
 
 watch(direction, n => {
   if (n === 'open') {
@@ -52,12 +47,10 @@ watch(direction, n => {
   }
 })
 
-watch(alertN, n => {
-  if (n) {
-    direction.value = "open"
-  } else {
-    direction.value = "close"
-  }
+onMounted(() => {
+  window.electronAPI.msgToRender((e: any, p: any) => {
+    console.log(p)
+  })
 })
 </script>
 
