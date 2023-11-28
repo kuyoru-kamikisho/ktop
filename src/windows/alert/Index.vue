@@ -1,17 +1,64 @@
 <template>
-  <div class="index-bg-1"></div>
-  <div class="index-bg-2">
-    <div class="title">
-      <span>提示标题</span>
+  <transition name="expand-x-reverse">
+    <div v-show="show_base_1" class="index-bg-1"></div>
+  </transition>
+  <transition name="expand-x-reverse">
+    <div v-show="show_base_2" class="index-bg-2">
+      <transition name="fade">
+        <div v-show="show_text" class="inner">
+          <div class="title">
+            <span v-text="title"></span>
+          </div>
+          <div class="content">
+            <p v-text="content"></p>
+          </div>
+        </div>
+      </transition>
     </div>
-    <div class="content">
-      <p>文本内容</p>
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script lang="ts" setup>
+import {onMounted, ref, watch} from "vue";
+import {storeToRefs} from "pinia";
+import useApp from "../../store/useApp";
 
+let direction = ref<'close' | 'open'>()
+const show_base_1 = ref(false)
+const show_base_2 = ref(false)
+const show_text = ref(false)
+const title = ref('')
+const content = ref('')
+
+const {alertN} = storeToRefs(useApp())
+
+watch(direction, n => {
+  if (n === 'open') {
+    show_base_1.value = true
+    setTimeout(() => {
+      show_base_2.value = true
+      setTimeout(() => {
+        show_text.value = true
+      }, 240)
+    }, 240)
+  } else {
+    show_text.value = false
+    setTimeout(() => {
+      show_base_2.value = false
+      setTimeout(() => {
+        show_base_1.value = false
+      }, 240)
+    }, 240)
+  }
+})
+
+watch(alertN, n => {
+  if (n) {
+    direction.value = "open"
+  } else {
+    direction.value = "close"
+  }
+})
 </script>
 
 <style lang="scss">
@@ -22,12 +69,12 @@
 
 .index-bg-2 {
   top: 0;
-  left: 5px;
-  width: calc(100% - 29px);
-  height: calc(100% - 20px);
+  left: 6px;
+  width: calc(100% - 38px);
+  height: calc(100% - 24px);
   position: absolute;
   background-color: #04040d;
-  padding: 10px 12px;
+  padding: 12px 16px;
 
   .title {
     font-size: 16px;

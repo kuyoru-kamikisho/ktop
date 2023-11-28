@@ -28,6 +28,14 @@ function changeExPro(b: boolean) {
     ipcRenderer.send('expro', b)
 }
 
+function openAlertWindow() {
+    ipcRenderer.send('open-alert-window')
+}
+
+function closeAlertWindow() {
+    ipcRenderer.send('close-alert-window')
+}
+
 const apis = {
     // send
     cpuUsage,
@@ -38,7 +46,9 @@ const apis = {
     getSites,
     // receive
     openurl,
-    changeExPro
+    changeExPro,
+    openAlertWindow,
+    closeAlertWindow
 };
 
 

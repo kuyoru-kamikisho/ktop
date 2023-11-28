@@ -1,0 +1,16 @@
+.expand-x-reverse-enter-active {
+  animation: expand-x-r-anime 262ms;
+}
+
+.expand-x-reverse-leave-active {
+  animation: expand-x-r-anime 262ms reverse;
+}
+
+@keyframes expand-x-r-anime {
+  from {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}

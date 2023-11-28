@@ -13,6 +13,7 @@ export default defineStore('useApp', {
         searchMode: 0,
         searchEngines: [],
         sites: [],
+        alertN: null as AlertB | null,
         alerts: [] as AlertB[]
     }),
     actions: {
