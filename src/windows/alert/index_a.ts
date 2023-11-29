@@ -42,9 +42,10 @@ export function createAlertWindow(ws: any) {
         ws.__alt.show();
         ws.__alt.webContents.openDevTools();
 
-        ipcMain.on('close-alert-window', () => {
-            ws.__alt.hide();
-            hasOpened = false
-        })
+    })
+    ipcMain.on('close-alert-window', () => {
+        if (!hasOpened) return;
+        ws.__alt.hide();
+        hasOpened = false
     })
 }

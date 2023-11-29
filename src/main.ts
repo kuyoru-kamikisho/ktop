@@ -9,7 +9,9 @@ import {createAlertWindow} from "./windows/alert/index_a";
 import {proxyMsg} from "./utils/sender/injectListen";
 
 const ws = {
+    /// メインウィンドウ
     __mwd: null as BrowserWindow,
+    /// プロンプトウィンドウ
     __alt: null as BrowserWindow
 }
 

@@ -5,8 +5,8 @@
   send: true
 - id: open_task
   name: 打开任务管理器
-  cmd: taskmgr
-  send: true
+  cmd: start "" "C:\Windows\system32\taskmgr.exe"
+  send: false
 - id: win_control
   name: 打开控制面板
   cmd: control

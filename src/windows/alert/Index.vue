@@ -21,11 +21,12 @@
 <script lang="ts" setup>
 import {onMounted, ref, watch} from "vue";
 
-let direction = ref<'close' | 'open'>()
+let direction = ref<'close' | 'open'>('close')
 const show_base_1 = ref(false)
 const show_base_2 = ref(false)
 const show_text = ref(false)
 const alertN = ref()
+const stack: any[] = []
 
 watch(direction, n => {
   if (n === 'open') {
@@ -42,6 +43,7 @@ watch(direction, n => {
       show_base_2.value = false
       setTimeout(() => {
         show_base_1.value = false
+        loopCheck();
       }, 240)
     }, 240)
   }
@@ -49,9 +51,26 @@ watch(direction, n => {
 
 onMounted(() => {
   window.electronAPI.msgToRender((e: any, p: any) => {
-    console.log(p)
+    stack.push(p)
+    loopCheck();
   })
 })
+
+function loopCheck() {
+  if (direction.value === 'close') {
+    const p = stack.shift();
+    if (p) {
+      alertN.value = {
+        title: p.title,
+        text: p.text
+      }
+      direction.value = 'open'
+      setTimeout(() => {
+        direction.value = 'close'
+      }, 5520)
+    }
+  }
+}
 </script>
 
 <style lang="scss">
