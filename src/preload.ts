@@ -1,7 +1,7 @@
 import {contextBridge, ipcRenderer} from 'electron'
 import {appConfig, cpuUsage, msgToRender, windowBlur} from "./preload/main_send";
 import {changeExPro, closeAlertWindow, msgToMain, openAlertWindow, openurl} from "./preload/main_receive";
-import {getCmds, getCrons, getSites, loadSearchEngine, runCmd} from "./preload/main_invoke";
+import {getCmds, getCrons, getCronTime, getSites, loadSearchEngine, runCmd} from "./preload/main_invoke";
 
 const apis = {
     cpuUsage,
@@ -14,6 +14,7 @@ const apis = {
     getCmds,
     runCmd,
     getCrons,
+    getCronTime,
 
     openurl,
     msgToMain,

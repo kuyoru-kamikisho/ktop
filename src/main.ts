@@ -2,7 +2,7 @@ import {app, Menu, nativeImage, MessageChannelMain, Tray, BrowserWindow, dialog}
 import path from 'path';
 import {sendCpuAvg} from "./utils/sender/cpus";
 import {sendConfig} from "./utils/sender/theme";
-import {handleSearchEngine, handleSitesReader, willRunCmd} from "./utils/handles/getters";
+import {handleSearchEngine, handleSitesReader, willParseCron, willRunCmd} from "./utils/handles/getters";
 import {listenExPro, listenOpenUrl, watchPosition} from "./utils/receiver/smalls";
 import {sendWindowBlur} from "./utils/sender/window";
 import {createAlertWindow} from "./windows/alert/index_a";
@@ -68,6 +68,7 @@ const createWindow = () => {
         listenExPro(ws.__mwd, config)
         createAlertWindow(ws)
         proxyMsg(ws)
+        willParseCron();
     })
 };
 

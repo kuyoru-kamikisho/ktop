@@ -23,6 +23,8 @@ const {crons, cmds} = storeToRefs(useApp())
 
 function runThis(o: any) {
   o.processing = true
+  window.electronAPI.getCronTime(o.time).then((s: string) => {
+  })
 }
 
 function stopThis(o: any) {

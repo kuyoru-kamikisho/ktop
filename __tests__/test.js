@@ -1,12 +1,9 @@
-var exec = require('child_process').exec;
-function runcmd(s) {
-    try {
-        exec(s, function (error, stdout, stderr) {
-            console.log(stdout);
-        });
+var _a = require("child_process"), execFile = _a.execFile, exec = _a.exec;
+execFile('../runners/kcron/core_arm_x86.exe', ['--list 5', 'w - - - - - 10 -'], { encoding: 'buffer' }, function (error, stdout, stderr) {
+    if (error) {
+        console.log(error);
+        return;
     }
-    catch (e) {
-        console.log(e);
-    }
-}
-runcmd('');
+    var output = stdout.toString();
+    console.log(output);
+});

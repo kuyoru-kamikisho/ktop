@@ -1,13 +1,10 @@
-const {exec} = require('child_process')
+const {execFile,exec} = require("child_process");
 
-function runcmd(s:string) {
-    try {
-        exec(s,(error:any, stdout:string, stderr:string)=>{
-            console.log(stdout)
-        })
-    } catch (e) {
-        console.log(e)
+execFile('../runners/kcron/core_arm_x86.exe', ['--list 5', 'w - - - - - 10 -'], {encoding: 'buffer'}, (error: any, stdout: string, stderr: string) => {
+    if (error) {
+        console.log(error)
+        return;
     }
-}
-
-runcmd('');
+    const output = stdout.toString();
+    console.log(output);
+})

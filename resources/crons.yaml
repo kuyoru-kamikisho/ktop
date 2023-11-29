@@ -13,7 +13,7 @@
   send: 洗完衣服啦！快去收衣服吧~
 - id: meeting
   name: 12号下午两点面试
-  time: z 2024 - - - 12 14 -
+  time: z 2008 - - - 12 14 -
   then: null
   bind: null
   send: 向我展示你的一切吧！
@@ -35,3 +35,9 @@
   then: null
   bind: null
   send: 经过了10分钟...
+- id: every_zero
+  name: 每到整点就提醒我
+  time: z - - - - - 0 0
+  then: null
+  bind: null
+  send: 现在是整点时分

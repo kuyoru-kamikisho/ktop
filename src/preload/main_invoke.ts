@@ -16,6 +16,10 @@ export function runCmd(s: string) {
     return ipcRenderer.invoke('run-cmd', s)
 }
 
+export function getCronTime(s: string) {
+    return ipcRenderer.invoke('get-cron-time', s)
+}
+
 export function getCrons() {
     return ipcRenderer.invoke('get-crons')
 }
