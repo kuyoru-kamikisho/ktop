@@ -3,24 +3,35 @@
   name: 10分钟后关机
   time: w - - - - - 10 -
   bind: shutdown_0
+  then: null
   send: null
 - id: wash_clothes
   name: 洗衣服中
   time: w - - - - - 70 -
+  then: null
   bind: null
   send: 洗完衣服啦！快去收衣服吧~
 - id: meeting
   name: 12号下午两点面试
   time: z 2024 - - - 12 14 -
+  then: null
   bind: null
   send: 向我展示你的一切吧！
-- id: tmt
+- id: tmt25
   name: 番茄工作25分钟
   time: w - - - - - 25 -
+  then: relax5
   bind: null
   send: 你已经工作了25分钟了，休息一下吧
+- id: relax5
+  name: 五分钟休息
+  time: w - - - - - 5 -
+  then: tmt25
+  bind: null
+  send: 整理状态，继续工作吧
 - id: ten
   name: 每隔10分钟提醒
   time: c - - - - - 10 -
+  then: null
   bind: null
   send: 经过了10分钟...
