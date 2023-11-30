@@ -4,8 +4,6 @@
 基于[electron](https://www.electronjs.org/)开发，
 同时集成了一些小功能。
 
-![img](./imgs/app_demo1.gif)
-
 ### 安装
 
 从[下载页面](https://github.com/kuyoru-kamikisho/ktop/releases)下载最新版本到您的电脑上，
