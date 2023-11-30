@@ -1,24 +1,4 @@
 ---
-- group: 工具
-  sites:
-    - name: iconFont
-      url: https://www.iconfont.cn/
-      class: green
-    - name: mdiIcon
-      url: https://pictogrammers.com/library/mdi/
-      class: blue
-    - name: yarn
-      url: https://yarnpkg.com/
-      class: blue
-    - name: 谷歌翻译
-      url: https://translate.google.com/
-      class: blue
-    - name: github
-      url: https://github.com/
-      class: red
-    - name: AI助手
-      url: https://beta.theb.ai/
-      class: red
 - group: 娱乐
   sites:
     - name: 哔哩哔哩
@@ -39,6 +19,40 @@
     - name: 樱花动漫
       url: https://www.yinhuadm.cc/
       class: blue
+- group: 工具
+  sites:
+    - name: AI助手
+      url: https://beta.theb.ai/
+      class: red
+    - name: iconFont
+      url: https://www.iconfont.cn/
+      class: green
+    - name: mdiIcon
+      url: https://pictogrammers.com/library/mdi/
+      class: blue
+    - name: yarn
+      url: https://yarnpkg.com/
+      class: blue
+    - name: 谷歌翻译
+      url: https://translate.google.com/
+      class: blue
+    - name: github
+      url: https://github.com/
+      class: red
+- group: 艺术
+  sites:
+    - name: Pixiv
+      url: https://www.pixiv.net/
+      class: red
+    - name: Fanbox
+      url: https://www.fanbox.cc/
+      class: red
+    - name: Pinterest
+      url: https://www.pinterest.jp/
+      class: red
+    - name: 花瓣
+      url: https://huaban.com/
+      class: blue
 - group: 交友
   sites:
     - name: Twitter
@@ -56,17 +70,3 @@
     - name: Facebook
       url: https://www.facebook.com/
       class: red
-- group: 艺术
-  sites:
-    - name: Pixiv
-      url: https://www.pixiv.net/
-      class: red
-    - name: Fanbox
-      url: https://www.fanbox.cc/
-      class: red
-    - name: Pinterest
-      url: https://www.pinterest.jp/
-      class: red
-    - name: 花瓣
-      url: https://huaban.com/
-      class: blue
