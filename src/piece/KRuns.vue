@@ -3,7 +3,7 @@
     <li class="item-cmd" :class="{processing:i.processing}" v-for="(i,x) in cmds" :key="x">
       <svg-icon @click="stopThis(i)" type="mdi" class="c-pointer icon-runanime" v-if="i.processing"
                 :path="mdiStopCircleOutline"></svg-icon>
-      <svg-icon @click="runThis(i)" type="mdi" class="c-pointer" v-else :path="mdiMotionPlayOutline"></svg-icon>
+      <svg-icon @click="useApp().runCmd(i)" type="mdi" class="c-pointer" v-else :path="mdiMotionPlayOutline"></svg-icon>
       <span class="cmd-name" v-text="i.name"></span>
       <span class="cmd-cmd" v-text="i.cmd"></span>
     </li>
@@ -17,21 +17,6 @@ import {storeToRefs} from "pinia";
 import useApp from "../store/useApp";
 
 const {cmds} = storeToRefs(useApp())
-
-function runThis(o: any) {
-  o.processing = true
-  if (o.send) {
-    window.electronAPI.openAlertWindow()
-    window.electronAPI.msgToMain({
-      to: 1,
-      title: '执行命令',
-      text: o.name
-    })
-  }
-  window.electronAPI.runCmd(o.cmd).then(() => {
-    o.processing = false
-  })
-}
 
 function stopThis(o: any) {
   o.processing = false

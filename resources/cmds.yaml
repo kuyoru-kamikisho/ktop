@@ -1,13 +1,13 @@
 ---
-- id: shutdown_0
+- id: cmd_shutdown_0
   name: 立即强制关机
   cmd: shutdown /s /f /t 0
   send: true
-- id: open_task
+- id: cmd_open_task
   name: 打开任务管理器
   cmd: start "" "C:\Windows\system32\taskmgr.exe"
   send: false
-- id: win_control
+- id: cmd_win_control
   name: 打开控制面板
   cmd: control
   send: false

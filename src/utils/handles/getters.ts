@@ -1,4 +1,4 @@
-import {execSync, execFile} from "child_process";
+import {execSync, exec} from "child_process";
 
 const readYaml = require('read-yaml');
 import {app, dialog, ipcMain} from 'electron'
@@ -64,7 +64,7 @@ export function willRunCmd() {
 export function willParseCron() {
     ipcMain.handle('get-cron-time', (e, s) => {
         return new Promise((resolve, reject) => {
-            execFile('./runners/kcron/core_arm_x86.exe', ['--list 5', s], {encoding: 'utf8'}, (error: any, stdout: string, stderr: string) => {
+            exec('.\\runners\\kcron\\core.exe --list 5 ' + s, (error: any, stdout: string, stderr: string) => {
                 if (error) {
                     reject(error)
                 }

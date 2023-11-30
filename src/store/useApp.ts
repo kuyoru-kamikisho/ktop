@@ -30,6 +30,20 @@ export default defineStore('useApp', {
         },
         resetMsgbox() {
             this.msgBox = msgBoxI
+        },
+        runCmd(o: any) {
+            o.processing = true
+            if (o.send) {
+                window.electronAPI.openAlertWindow()
+                window.electronAPI.msgToMain({
+                    to: 1,
+                    title: '执行命令',
+                    text: o.name
+                })
+            }
+            window.electronAPI.runCmd(o.cmd).then(() => {
+                o.processing = false
+            })
         }
     }
 })

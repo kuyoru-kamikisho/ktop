@@ -40,7 +40,7 @@ export function createAlertWindow(ws: any) {
         if (hasOpened) return;
         hasOpened = true;
         ws.__alt.show();
-        ws.__alt.webContents.openDevTools();
+        // ws.__alt.webContents.openDevTools();
 
     })
     ipcMain.on('close-alert-window', () => {

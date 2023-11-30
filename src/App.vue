@@ -41,8 +41,7 @@ onMounted(() => {
     memory.value = (100 * m).toFixed(0)
   })
   window.electronAPI.windowBlur((e: any, name: string) => {
-    // TODO 要修改回去
-    // exPro.value = false
+    exPro.value = false
   })
   window.electronAPI.appConfig((e: any, o: any) => {
     appConfig.value = o

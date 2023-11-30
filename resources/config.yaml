@@ -1,18 +1,18 @@
 ---
-  build: 
-    frame: false
-    transparent: true
-  main: 
-    title: "ktop"
-    maxWidth: 542
-    maxHeight: 300
-    minWidth: 96
-    minHeight: 28
-    bgcolor: "transparent"
-    alwaysOnTop: true
-    opendevtool: true
-    resizable: false
-    bgimage: ""
-    position: 
-      - 790
-      - 79
+build:
+  frame: false
+  transparent: true
+main:
+  title: "ktop"
+  maxWidth: 542
+  maxHeight: 300
+  minWidth: 96
+  minHeight: 28
+  bgcolor: "transparent"
+  alwaysOnTop: true
+  opendevtool: false
+  resizable: false
+  bgimage: ""
+  position:
+    - 790
+    - 79
