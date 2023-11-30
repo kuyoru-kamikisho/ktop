@@ -52,8 +52,8 @@ const createWindow = () => {
             ws.__mwd.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
         }
 
-        if (config.main.opendevtool)
-            ws.__mwd.webContents.openDevTools();
+        // TODO
+        // ws.__mwd.webContents.openDevTools();
         sendCpuAvg(ws.__mwd)
         ws.__mwd.setPosition(config.main.position[0], config.main.position[1])
         ws.__mwd.setSkipTaskbar(true)

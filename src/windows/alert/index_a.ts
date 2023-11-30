@@ -40,6 +40,7 @@ export function createAlertWindow(ws: any) {
         if (hasOpened) return;
         hasOpened = true;
         ws.__alt.show();
+        // TODO
         // ws.__alt.webContents.openDevTools();
 
     })

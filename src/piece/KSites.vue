@@ -129,7 +129,8 @@ function rgTabKey(e: KeyboardEvent) {
 
       &.active {
         background-color: rgba(0, 0, 0, 0.68);
-        color: rgba(221, 255, 0, 0.9);
+        color: rgba(255, 0, 59, 0.9);
+        font-weight: bolder;
       }
     }
   }

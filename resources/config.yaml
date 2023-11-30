@@ -10,7 +10,6 @@ main:
   minHeight: 28
   bgcolor: "transparent"
   alwaysOnTop: true
-  opendevtool: false
   resizable: false
   bgimage: ""
   position:

@@ -41,6 +41,7 @@ onMounted(() => {
     memory.value = (100 * m).toFixed(0)
   })
   window.electronAPI.windowBlur((e: any, name: string) => {
+    // TODO
     exPro.value = false
   })
   window.electronAPI.appConfig((e: any, o: any) => {
@@ -175,10 +176,57 @@ $hvc-color: rgba(252, 32, 64, 0.96);
   padding: 0 0 0 1.37em;
   display: inline-block;
   transition: all .2s ease;
+  position: relative;
+  overflow: hidden;
+
+  &.red {
+    &::after, &::before {
+      background-color: #ff133a;
+    }
+  }
+
+  &.blue {
+    &::after, &::before {
+      background-color: #406dff;
+    }
+  }
+
+  &.green {
+    &::after, &::before {
+      background-color: #69ff35;
+    }
+  }
+
+  &::after {
+    content: "";
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    right: 6px;
+    top: 0;
+    z-index: 1;
+    transition: transform 328ms;
+    transform: translate(-96px, 0);
+  }
+
+  &::before {
+    content: "";
+    background-color: white;
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    left: 6px;
+    top: 0;
+    z-index: 1;
+  }
 
   &:hover {
-    color: black;
-    background-color: #bfff21;
+    color: white;
+    padding: 0 0 0 1.9em;
+
+    &::after {
+      transform: translate(0, 0);
+    }
   }
 }
 </style>
