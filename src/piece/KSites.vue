@@ -14,7 +14,7 @@
   </k-inputer>
   <div class="k-sites sites">
     <ul class="group-item">
-      <li :class="{active:i.active}" @click="mapTo(i)" v-for="(i,x) in sites" :key="x">
+      <li :class="{active:i.active}" @click="mapTo(i)" @mouseenter="groupTip" v-for="(i,x) in sites" :key="x">
         <span v-text="i.group"></span>
       </li>
     </ul>
@@ -97,6 +97,10 @@ function rgTabKey(e: KeyboardEvent) {
       }
     }
   }
+}
+
+function groupTip() {
+  msgBox.value = '按下 Tab 键可以快速切换分组'
 }
 </script>
 

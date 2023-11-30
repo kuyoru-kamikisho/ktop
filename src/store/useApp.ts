@@ -25,7 +25,7 @@ export default defineStore('useApp', {
                 }
                 if (n !== -1)
                     this.searchMode = n
-                this.msgBox = `您正在使用 <code>${this.searchEngines[this.searchMode].name}</code> 作为您的搜索引擎，按下 Enter 进行搜索`
+                this.msgBox = `使用 <code>${this.searchEngines[this.searchMode].name}</code> 搜索。 按下 Enter 进行搜索，Tab 切换搜索方式`
             }
         },
         resetMsgbox() {
