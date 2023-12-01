@@ -11,23 +11,23 @@ module.exports = {
 
     /**
      * 在应用程序启动完成后，若 use 为真，则会执行本方法。
-     * onMounted是唯一会被应用程序执行的方法，其他方法均为用户自定义方法
+     * onMounted是唯一会被应用程序直接执行的方法
+     *
+     * 您可以在这里定义其他方法，
+     * 但是必须在onMounted内部使用在会被间接调用。
      *
      * 该方法内必须返回对应的菜单列表
+     *
+     * 不得移除async标记，因为在设计上该方法必须为异步函数。
      */
     async onMounted() {
         const coreExePath = path.resolve(__dirname + '/hysteria.exe');
         const downloadUrl = 'https://download.hysteria.network/app/latest/hysteria-windows-amd64.exe'
 
-        console.log(coreExePath)
-
         if (!fs.existsSync(coreExePath)) {
             console.log('开始下载')
             const fileStream = fs.createWriteStream(coreExePath);
-            this.downFile(downloadUrl, fileStream)
-                .then(() => {
-
-                })
+            await this.downFile(downloadUrl, fileStream)
         }
     },
     /**

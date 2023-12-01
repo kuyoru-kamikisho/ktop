@@ -40,13 +40,13 @@
   time: w - - - - - 25 -
   then: cron_relax_5
   bind: null
-  send: 你已经工作了25分钟了，休息一下吧是 q(≧▽≦q)
+  send: 你已经工作了25分钟了，休息一下吧 q(≧▽≦q)
 - id: cron_relax_5
   name: 五分钟的休息
   time: w - - - - - 5 -
   then: cron_tomato_25
   bind: null
-  send: 整理状态，继续工作吧是 (o゜▽゜)o☆
+  send: 整理状态，继续工作吧 (o゜▽゜)o☆
 - id: cron_in_ten
   name: 每隔10分钟提醒
   time: c - - - - - 10 -
