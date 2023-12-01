@@ -71,11 +71,6 @@ import useApp from "../store/useApp";
 const {crons, cmds, msgBox} = storeToRefs(useApp())
 
 function runThis(o: any) {
-  let x = crons.value.findIndex(a => a.id === o.id);
-  if (x > -1) {
-    let v = crons.value.splice(x, 1)[0];
-    crons.value.unshift(v);
-  }
   o.showInfo = false
   o.timeProgress = 0;
   o.processing = true

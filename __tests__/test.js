@@ -1,9 +1,16 @@
-var fs = require("fs");
-var _a = require("child_process"), execFile = _a.execFile, exec = _a.exec;
-exec('..\\runners\\kcron\\core.exe -l 5 w - - - - - 10 -', function (error, stdout, stderr) {
-    if (error) {
-        console.log(error);
-        return;
+"use strict";
+exports.__esModule = true;
+var path = require('node:path');
+var https = require('node:https');
+var fs = require('fs');
+var dir1 = path.resolve('../runners');
+fs.readdirSync(dir1).forEach(function (s) {
+    var dir2 = path.resolve(dir1, s);
+    var b = fs.statSync(dir2).isDirectory();
+    if (b) {
+        var runner = require(dir2);
+        if (runner.use && runner.onMounted) {
+            runner.onMounted();
+        }
     }
-    console.log(stdout);
 });
