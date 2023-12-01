@@ -42,7 +42,7 @@
   bind: null
   send: 你已经工作了25分钟了，休息一下吧 q(≧▽≦q)
 - id: cron_relax_5
-  name: 五分钟的休息
+  name: 五分钟的休息结束
   time: w - - - - - 5 -
   then: cron_tomato_25
   bind: null
