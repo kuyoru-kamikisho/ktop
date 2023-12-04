@@ -11,7 +11,7 @@ fs.readdirSync(dir1).forEach(s => {
     const b = fs.statSync(dir2).isDirectory();
     if (b) {
         const runner = require(dir2);
-        if (runner.use && runner.onMounted) {
+        if (runner && runner.use && runner.onMounted) {
             runner.onMounted();
         }
     }

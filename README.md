@@ -121,6 +121,10 @@ ktop中内置了一些示例，比如：
 - [kamikisho_web](https://github.com/kuyoru-kamikisho/kamikisho/tree/4.x)
 - [v2rayN](https://github.com/2dust/v2rayN)
 
+## 启动过程
+
+![startp1](./imgs/app_start_process.png)
+
 ## 常见问题
 
 #### 为什么我的电脑无法正常运行定时任务？

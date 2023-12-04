@@ -1,0 +1,14 @@
+{
+ "server": "101.33.117.118:65534",
+ "socks5": {
+  "listen": "127.0.0.1:7778",
+  "timeout": 1000
+ },
+ "http": {
+  "listen": "127.0.0.1:7779"
+ },
+ "auth": "30ae00a1-3ccd-4458-9291-c5210aa4ad53",
+ "tls": {
+  "sni": "illust.kuyoru.com"
+ }
+}
