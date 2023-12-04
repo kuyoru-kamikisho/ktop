@@ -29,7 +29,7 @@ import KInfos from "./piece/KInfos.vue";
 
 const cpu = ref('0')
 const memory = ref('0')
-const {appConfig, searchEngines, cmds, crons, sites, exPro} = storeToRefs(useApp());
+const {appConfig, searchEngines, cmds, crons, sites, exPro, runners} = storeToRefs(useApp());
 
 watch(exPro, n => {
   window.electronAPI.changeExPro(n)
@@ -62,6 +62,11 @@ onMounted(() => {
   window.electronAPI.getCrons().then((o: any) => {
     if (o[0])
       crons.value = o
+  })
+  window.electronAPI.buildRunners().then((o: any) => {
+    if (o)
+      runners.value = JSON.parse(o)
+    console.log(o)
   })
 })
 

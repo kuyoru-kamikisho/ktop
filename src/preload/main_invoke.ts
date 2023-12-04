@@ -23,3 +23,7 @@ export function getCronTime(s: string) {
 export function getCrons() {
     return ipcRenderer.invoke('get-crons')
 }
+
+export function buildRunners() {
+    return ipcRenderer.invoke('build-runners')
+}

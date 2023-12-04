@@ -13,6 +13,7 @@ export default defineStore('useApp', {
         sites: [],
         crons: [],
         cmds: [],
+        runners: []
     }),
     actions: {
         shiftSearchEngine(n?: number) {

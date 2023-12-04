@@ -37,7 +37,7 @@
 - 非开发人员请不要改动`resources`目录下的`config.yaml`文件
 - 在游戏全屏模式下，您可以通过电脑托盘区域的小图标可以设置是否启用鼠标穿透模式
 
-#### 执行器
+## 执行器
 
 目前在规划中内置了以下执行器的结构模板
 
@@ -47,6 +47,25 @@
 更新：默认情况下，ktop不会自动下载最新的 net core， 如果您需要使用特定版本的核心， 请自行下载并替换`runners`目录下对应的可执行文件
 
 在ktop的规划中不会内置任何 net core，这意味着想要通过ktop实现代理您需要自行下载，并且编辑`runners`目录下对应的配置文件
+
+### 如何编写自己的执行器
+
+您可以参考目录[runners](./runners)下已经写好的执行器模板，重点查看各个执行器目录下的`index.js`
+
+index.js返回一个nodejs模块，他必须具备以下属性：
+
+| AttrName              | Type     | Description                                                                                               |
+|-----------------------|----------|-----------------------------------------------------------------------------------------------------------|
+| use                   | Boolean  | Whether to use this directory as an executor and display it as a menu item.                               |
+| exclusive             | Boolean  | When enabled, the execution of any menu within this executor will stop any other menu items from running. |
+| menuTemplate          | Object   | A basic menu template                                                                                     |
+| menuTemplate.name     | String   | Name of menu.                                                                                             |
+| menuTemplate.send_on  | String   | Message when menu start.                                                                                  |
+| menuTemplate.send_off | String   | Message when menu stop.                                                                                   |
+| menuTemplate.click    | Function | Menu Function.                                                                                            |
+| onMounted             | Function | Triggered once when entering the "Agent" module, used to build the menu list.                             |
+
+除了必要上述表格中的必须属性之外，您可以在index.js定义任何函数和属性，他们是否会被调用取决于您定义在`onMounted`的代码。
 
 ### 定时器示例
 

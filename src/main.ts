@@ -2,7 +2,13 @@ import {app, Menu, nativeImage, MessageChannelMain, Tray, BrowserWindow, dialog}
 import path from 'path';
 import {sendCpuAvg} from "./utils/sender/cpus";
 import {sendConfig} from "./utils/sender/theme";
-import {handleSearchEngine, handleSitesReader, willParseCron, willRunCmd} from "./utils/handles/getters";
+import {
+    handleSearchEngine,
+    handleSitesReader,
+    willBuildRunners,
+    willParseCron,
+    willRunCmd
+} from "./utils/handles/getters";
 import {listenExPro, listenOpenUrl, watchPosition} from "./utils/receiver/smalls";
 import {sendWindowBlur} from "./utils/sender/window";
 import {createAlertWindow} from "./windows/alert/index_a";
@@ -53,7 +59,7 @@ const createWindow = () => {
         }
 
         // TODO
-        // ws.__mwd.webContents.openDevTools();
+        ws.__mwd.webContents.openDevTools();
         sendCpuAvg(ws.__mwd)
         ws.__mwd.setPosition(config.main.position[0], config.main.position[1])
         ws.__mwd.setSkipTaskbar(true)
@@ -69,6 +75,7 @@ const createWindow = () => {
         createAlertWindow(ws)
         proxyMsg(ws)
         willParseCron();
+        willBuildRunners();
     })
 };
 
