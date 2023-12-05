@@ -66,7 +66,6 @@ onMounted(() => {
   window.electronAPI.buildRunners().then((o: any) => {
     if (o)
       runners.value = JSON.parse(o)
-    console.log(o)
   })
 })
 

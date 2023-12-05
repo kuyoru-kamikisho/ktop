@@ -12,3 +12,26 @@ ktop的代理就是使用运行器设置网络代理的。
 **注意：不要建立没有意义的目录。**
 
 **注意：kcron是本程序定时功能的依赖项，因此删除kcron目录可能会导致程序崩溃。**
+
+**注意：任何 index.js 入口文件都应该先通过您的本地测试。**
+
+### index.js 模板
+
+```javascript
+module.exports = {
+    use: false,
+    exclusive: false,
+    menuTemplate: {
+        name: 'menu-name',
+        send_on: null,
+        send_off: null,
+        click(killback) {
+        },
+        kill() {
+        }
+    },
+    async onMounted() {
+        return [this.menuTemplate]
+    }
+}
+```

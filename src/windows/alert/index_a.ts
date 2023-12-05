@@ -1,5 +1,6 @@
 import {BrowserWindow, ipcMain, screen} from "electron";
 import path from "path";
+import type {WSO} from "../../main";
 
 let hasOpened = false;
 const w_a = 320, h_a = 94;
@@ -9,7 +10,7 @@ const w_a = 320, h_a = 94;
  *
  * 窗口不可顶替，溢出的窗口将在其它web内容销毁后渲染
  */
-export function createAlertWindow(ws: any) {
+export function createAlertWindow(ws: WSO) {
     const mainScreen = screen.getPrimaryDisplay()
     const {width} = mainScreen.size
 
@@ -29,7 +30,6 @@ export function createAlertWindow(ws: any) {
     })
     if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
         ws.__alt.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL + '/subpage/alert/');
-        console.log(MAIN_WINDOW_VITE_DEV_SERVER_URL)
     } else {
         ws.__alt.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/subpage/alert/index.html`));
     }

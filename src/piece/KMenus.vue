@@ -1,6 +1,6 @@
 <template>
   <ul class="k-menu">
-    <li :class="{active:i.active}" v-for="(i,x) in menus" :key="x" @click="useMenu().chooseM(x)">
+    <li v-ripple :class="{active:i.active}" v-for="(i,x) in menus" :key="x" @click="useMenu().chooseM(x)">
       <svg-icon size="16" type="mdi" :path="i.icon"></svg-icon>
       <span class="ctxt" v-text="i.title"></span>
     </li>

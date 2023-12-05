@@ -14,11 +14,19 @@ import {sendWindowBlur} from "./utils/sender/window";
 import {createAlertWindow} from "./windows/alert/index_a";
 import {proxyMsg} from "./utils/sender/injectListen";
 
-const ws = {
+export type WSO = {
     /// メインウィンドウ
-    __mwd: null as BrowserWindow,
+    __mwd: BrowserWindow | null
     /// プロンプトウィンドウ
-    __alt: null as BrowserWindow
+    __alt: BrowserWindow | null
+    /// エクスキュウタス
+    MENU_CLONE: any
+}
+
+const ws: WSO = {
+    __mwd: null,
+    __alt: null,
+    MENU_CLONE: []
 }
 
 let tray: null | Tray = null;
@@ -59,7 +67,7 @@ const createWindow = () => {
         }
 
         // TODO
-        ws.__mwd.webContents.openDevTools();
+        // ws.__mwd.webContents.openDevTools();
         sendCpuAvg(ws.__mwd)
         ws.__mwd.setPosition(config.main.position[0], config.main.position[1])
         ws.__mwd.setSkipTaskbar(true)
@@ -75,7 +83,7 @@ const createWindow = () => {
         createAlertWindow(ws)
         proxyMsg(ws)
         willParseCron();
-        willBuildRunners();
+        willBuildRunners(ws);
     })
 };
 

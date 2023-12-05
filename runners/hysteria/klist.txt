@@ -1,3 +1,5 @@
 hysteria2://dfbev6f25-e2fe-4892-a98a-3c6r2c03y6@www.google.com:8888?peer=www.google.com&insecure=0&sni=www.google.com&alpn=h3#5b2eff25-singbox_hysteria2
-
 hysteria2://rf0a1-3ccd-44b8-9291-c5210aa4art3@www.google.com:8888?peer=www.google.com&insecure=0&sni=www.google.com&alpn=h3#default_VLESS_TCP/TLS_Vision-singbox_hysteria2
+
+# 在index.js中的解析逻辑中，每一个以字符串“hysteria2://”开头的行都是一个解析节点
+# index.js 任何人都可以编辑，请参阅规范：https://github.com/kuyoru-kamikisho/ktop/blob/main/README.md

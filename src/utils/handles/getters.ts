@@ -2,10 +2,9 @@ import {execSync, exec} from "child_process";
 import {app, dialog, ipcMain} from 'electron'
 import path from "node:path";
 import fs from "fs";
+import type {WSO} from "../../main";
 
 const readYaml = require('read-yaml');
-
-const R
 
 export function handleSearchEngine() {
     readYaml('./resources/searchEngine.yaml', function (err: any, o: any) {
@@ -78,7 +77,7 @@ export function willParseCron() {
     })
 }
 
-export function willBuildRunners() {
+export function willBuildRunners(ws: WSO) {
     ipcMain.handle('build-runners', () => {
         return new Promise((R, J) => {
             const summary: any = [];
@@ -90,21 +89,27 @@ export function willBuildRunners() {
                 const dir = dirs[i];
                 const rgroup = {
                     rname: dir,
-                    mlist: [] as any[]
+                    mlist: [] as any[],
+                    exclusive: false
                 }
                 const dir2 = path.resolve(dirRoot, dir);
                 const b = fs.statSync(dir2).isDirectory();
                 if (b) {
                     const runner = require(dir2);
                     if (runner && runner.use && runner.onMounted) {
-                        promises.push(Promise.resolve(runner.onMounted().then((r: any) => {
-                            rgroup.mlist = r;
-                            summary.push(rgroup);
-                        })))
+                        promises.push(Promise.resolve(
+                            runner.onMounted()
+                                .then((r: any) => {
+                                    rgroup.mlist = r;
+                                    rgroup.exclusive = runner.exclusive
+                                    summary.push(rgroup);
+                                }))
+                        )
                     }
                 }
             }
             Promise.all(promises).then(() => {
+                ws.MENU_CLONE = summary;
                 R(JSON.stringify(summary));
             })
         })

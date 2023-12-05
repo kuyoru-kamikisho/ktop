@@ -14,17 +14,17 @@ module.exports = {
     /**
      * 是否独占代理模块
      * 启用后菜单内的任何一项触发后都会停止其它启动中的菜单项
-     * 该属性会影响所有执行器的菜单
+     * ktop会在创建新进程之前尝试调用所有菜单项的 kill 方法
+     * 该属性只会影响当前执行器模块内部的菜单
      * 对已经执行结束的执行器不会产生影响
      */
     exclusive: true,
 
     /**
      * 一个执行器菜单项的基础模板
-     *
      * onMounted应该返回一个由 menuTemplate 构成的数组
-     *
      * 除被标记为菜单属性的，均视为用户自定义属性
+     * 这只是一个模板对象，任何属性和函数都不应该定义到此处
      */
     menuTemplate: {
         /**
@@ -46,10 +46,23 @@ module.exports = {
         /**
          * 菜单属性：点击时触发
          *
-         * 当停止一个正在运行的菜单项时，
-         * 会自动传入true作为杀死进程的信号。
+         * @param killback {Function}
+         * 当你执行的程序自动杀死自身进程时，
+         * 这个杀死自身的动作应该让ktop主程序知道，
+         * ktop会在click函数的第一个参数传入一个回调，
+         * 你应该在合适的时机调用这个回调，
+         * 否则可能会一直显示为正在运行，
+         * 即使程序已经退出。
          */
-        click(kill = false) {
+        click(killback) {
+        },
+        /**
+         * 如果执行器并非可以在短时间内执行结束的程序，那应该传入一个kill函数
+         * 否则请移除此函数定义（只要定义了kill函数，点击后就会进入“运行中”状态，
+         * 该状态只能通过调用kill函数取消）。
+         * 如果不提供此函数，则ktop会认为此程序是可以瞬间执行完成的程序。
+         */
+        kill() {
         }
     },
 
@@ -111,7 +124,7 @@ module.exports = {
             let line = split[i];
             const b = line.startsWith('hysteria2://');
             if (b) {
-                const menu = this.menuTemplate
+                const menu = JSON.parse(JSON.stringify(this.menuTemplate))
                 const hurl = new URL(line)
 
                 const params = hurl.searchParams;
@@ -125,13 +138,7 @@ module.exports = {
                     configTemplate.tls.sni = params.get('sni')
                     menu.name = '节点' + i
                     menu.config = configTemplate
-                    menu.click = (kill = false) => {
-                        if (kill) {
-                            this.spawnH?.kill();
-                            this.changeProxy(false, '0')
-                            return;
-                        }
-
+                    menu.click = (killback) => {
                         fs.writeFileSync(
                             configFileOut,
                             JSON.stringify(menu.config, null, ' '),
@@ -148,10 +155,15 @@ module.exports = {
                         });
 
                         this.spawnH.on('close', (code) => {
+                            killback?.();
                             console.log(`child process exited with code ${code}`);
                         });
 
                         this.changeProxy(true, menu.config.http.listen);
+                    }
+                    menu.kill = () => {
+                        this.spawnH?.kill();
+                        this.changeProxy(false, '0')
                     }
                     MENULIST.push(menu)
                 })

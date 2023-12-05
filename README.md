@@ -50,7 +50,35 @@
 
 ### 如何编写自己的执行器
 
-您可以参考目录[runners](./runners)下已经写好的执行器模板，重点查看各个执行器目录下的`index.js`
+#### 前言
+
+在开始这一节之前，您必须要拥有一定程度的编程能力和学习能力，
+但是不要害怕，您不会nodejs？
+
+**我也不会！** 
+
+我一直做的都是前端工作，
+我在公司里是一名前端开发工程师，工作也才一年多，
+但是在公司内部完全没有接触过除了web三件套（html, css, js）之外的任何语言，
+但是我具备基础的编程思维，我也会使用搜索引擎解决我的问题，更重要的，
+我会查看各个语言的开发文档。
+
+您可以查看我写过的仓库里面涵盖了c#、c++、ts、js、tsx等各种各样的语言，
+并且都有一定成果，这得益于我每天不断地利用搜索引擎，而不是我大学学的多好。
+认识我的同学都知道我在大学是几乎不学习的，
+我认为使用一门新语言开发程序之前并非只能先学才能上手，
+而可以现学现卖。
+
+我完全不懂c++，但还是开发了kcron；
+我完全不懂electron和nodejs，但还是开发了ktop；
+我完全不懂c#，但还是开发了crommitor；
+
+所以，只要有基本的编程思维和一点点学习能力，你也可以轻松配置出各种各样的执行器！
+
+#### 开始
+
+您可以参考目录[runners](./runners)下已经写好的执行器模板，
+重点查看各个执行器目录下的`index.js`
 
 index.js返回一个nodejs模块，他必须具备以下属性：
 
@@ -63,9 +91,12 @@ index.js返回一个nodejs模块，他必须具备以下属性：
 | menuTemplate.send_on  | String   | Message when menu start.                                                                                  |
 | menuTemplate.send_off | String   | Message when menu stop.                                                                                   |
 | menuTemplate.click    | Function | Menu Function.                                                                                            |
+| menuTemplate.kill     | Function | Menu Function, define this function when the type of program is a long-running program in the background. |
 | onMounted             | Function | Triggered once when entering the "Agent" module, used to build the menu list.                             |
 
-除了必要上述表格中的必须属性之外，您可以在index.js定义任何函数和属性，他们是否会被调用取决于您定义在`onMounted`的代码。
+除了必要上述表格中的必须属性之外，
+您可以在index.js定义任何函数和属性，
+他们是否会被调用取决于您定义在`onMounted`的代码。
 
 ### 定时器示例
 
