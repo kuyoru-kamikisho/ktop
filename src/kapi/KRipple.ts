@@ -1,7 +1,6 @@
 import './k-ripple.scss'
 import type {DirectiveBinding} from "vue";
 
-
 function updateRipple(el: HTMLElement, binding: DirectiveBinding, b: boolean) {
     const div = document.createElement('div');
     el.style.overflow = 'hidden'
@@ -13,13 +12,6 @@ function updateRipple(el: HTMLElement, binding: DirectiveBinding, b: boolean) {
         '<circle cx="10" cy="10" r="10" />' +
         '</svg>'
 
-    const len = Math.round(
-            Math.sqrt(
-                Math.pow(el.offsetWidth, 2)
-                + Math.pow(el.offsetHeight, 2)
-            )) + 24,
-        mr = Math.round(len / 10),
-        mt = 50 / mr;
     let removeing: any,
         leaveing: any,
         px: any,
@@ -36,6 +28,13 @@ function updateRipple(el: HTMLElement, binding: DirectiveBinding, b: boolean) {
         div.style.opacity = ''
     }
     const dfn = (e: MouseEvent) => {
+        const len = Math.round(
+                Math.sqrt(
+                    Math.pow(el.offsetWidth, 2)
+                    + Math.pow(el.offsetHeight, 2)
+                )) + 24,
+            mr = Math.round(len / 10),
+            mt = 50 / mr;
         resE()
         clearTimeout(removeing)
         el.appendChild(div)
