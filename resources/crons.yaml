@@ -5,15 +5,33 @@
   bind: cmd_shutdown_0
   then: null
   send: null
-- id: cron_shutdown_in_tenM
+- id: cron_shutdown_in_10m
   name: 10分钟后关机
   time: w - - - - - 10 -
   bind: cmd_shutdown_0
   then: null
   send: null
-- id: cron_shutdown_in_hh
-  name: 半小时后关机
+- id: cron_shutdown_in_20m
+  name: 20分钟后关机
+  time: w - - - - - 20 -
+  bind: cmd_shutdown_0
+  then: null
+  send: null
+- id: cron_shutdown_in_30m
+  name: 30分钟后关机
   time: w - - - - - 30 -
+  bind: cmd_shutdown_0
+  then: null
+  send: null
+- id: cron_shutdown_in_40m
+  name: 40分钟后关机
+  time: w - - - - - 40 -
+  bind: cmd_shutdown_0
+  then: null
+  send: null
+- id: cron_shutdown_in_50m
+  name: 50分钟后关机
+  time: w - - - - - 50 -
   bind: cmd_shutdown_0
   then: null
   send: null
@@ -29,45 +47,15 @@
   then: null
   bind: null
   send: 洗完衣服啦！快去收衣服吧~
-- id: cron_meeting
-  name: 12号下午两点面试
-  time: z 2008 - - - 12 14 -
-  then: null
-  bind: null
-  send: 做好准备，向面试官展示你的一切吧！
 - id: cron_tomato_25
-  name: 番茄工作25分钟
+  name: 番茄工作法--25分钟的工作
   time: w - - - - - 25 -
   then: cron_relax_5
   bind: null
   send: 你已经工作了25分钟了，休息一下吧 q(≧▽≦q)
 - id: cron_relax_5
-  name: 五分钟的休息结束
+  name: 番茄工作法--5分钟的休息
   time: w - - - - - 5 -
   then: cron_tomato_25
   bind: null
   send: 整理状态，继续工作吧 (o゜▽゜)o☆
-- id: cron_in_ten
-  name: 每隔10分钟提醒
-  time: c - - - - - 10 -
-  then: null
-  bind: null
-  send: 经过了10分钟...
-- id: cron_every_zh
-  name: 每到整点就提醒我
-  time: z - - - - - 0 0
-  then: null
-  bind: null
-  send: 现在是整点时分，距离下班又近了一步（。＾▽＾）
-- id: cron_test_10s
-  name: 每隔10秒提示
-  time: c - - - - - - 10
-  then: null
-  bind: null
-  send: 10秒的测试
-- id: cron_test_bind_out
-  name: 10s后打开任务管理器
-  time: w - - - - - - 10
-  then: null
-  bind: cmd_open_task
-  send: 测试用例

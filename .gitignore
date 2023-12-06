@@ -1,6 +1,7 @@
 logs
 *.log
 *.exe
+*.dat
 *.pid
 *.seed
 *.pid.lock

@@ -7,9 +7,9 @@ var dir1 = path.resolve('../runners');
 fs.readdirSync(dir1).forEach(function (s) {
     var dir2 = path.resolve(dir1, s);
     var b = fs.statSync(dir2).isDirectory();
-    if (b) {
+    if (b && s === 'xray') {
         var runner = require(dir2);
-        if (runner.use && runner.onMounted) {
+        if (runner && runner.use && runner.onMounted) {
             runner.onMounted();
         }
     }

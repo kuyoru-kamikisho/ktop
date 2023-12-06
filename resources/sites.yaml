@@ -1,5 +1,5 @@
 ---
-- group: 娱乐
+- group: ACG
   sites:
     - name: 哔哩哔哩
       url: https://www.bilibili.com/
@@ -18,6 +18,9 @@
       class: blue
     - name: 樱花动漫
       url: https://www.yinhuadm.cc/
+      class: blue
+    - name: 漫画柜
+      url: https://www.manhuagui.com/
       class: blue
 - group: 工具
   sites:
@@ -53,6 +56,9 @@
     - name: 花瓣
       url: https://huaban.com/
       class: blue
+    - name: Y站
+      url: https://yande.re/post
+      class: red
 - group: 交友
   sites:
     - name: Twitter
