@@ -104,7 +104,7 @@ module.exports = {
         }
 
         const nodeList = fs.readFileSync(configs, {encoding: 'utf-8'});
-        const split = nodeList.split(/\r\n/);
+        const split = nodeList.split(/[\r\n]/);
         const configTemplate = {
             server: "",
             socks5: {
