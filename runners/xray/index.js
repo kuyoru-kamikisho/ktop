@@ -4,7 +4,7 @@ const https = require('https')
 const chp = require('child_process')
 
 module.exports = {
-    use: true,
+    use: false,
     exclusive: true,
     menuTemplate: {
         name: 'menu-name',
