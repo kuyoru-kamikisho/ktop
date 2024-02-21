@@ -1,0 +1,110 @@
+---
+- group: 影音
+  sites:
+    - name: 哔哩哔哩
+      url: https://www.bilibili.com/
+      class: green
+    - name: 哔哩HKA
+      url: https://space.bilibili.com/11783021
+      class: red
+    - name: 风车动漫
+      url: https://www.dm530w.org/
+      class: green
+    - name: AGE动漫
+      url: https://www.agemys.cc/
+      class: blue
+    - name: NyaFun
+      url: https://www.nyafun.net/
+      class: blue
+    - name: 樱花动漫
+      url: https://www.yinhuadm.cc/
+      class: blue
+    - name: HAnime
+      url: https://hanime1.me/
+      class: red
+    - name: Youtube
+      url: https://www.youtube.com/
+      class: red
+    - name: 油管音乐
+      url: https://music.youtube.com/
+      class: red
+    - name: 网易云音乐
+      url: https://music.163.com/
+      class: green
+- group: 漫画
+  sites:
+    - name: 漫画柜
+      url: https://www.manhuagui.com/
+      class: blue
+    - name: 古风漫画
+      url: https://www.123gf.com/
+      class: blue
+    - name: NHentai
+      url: https://nhentai.net/
+      class: red
+    - name: 18Comic
+      url: https://18comic.vip/
+      class: red
+    - name: EHentai
+      url: https://e-hentai.org/
+      class: red
+- group: 工具
+  sites:
+    - name: AI助手
+      url: https://beta.theb.ai/
+      class: red
+    - name: 谷歌邮箱
+      url: https://mail.google.com/
+      class: red
+    - name: QQ邮箱
+      url: https://mail.qq.com/
+      class: green
+    - name: iconFont
+      url: https://www.iconfont.cn/
+      class: green
+    - name: mdiIcon
+      url: https://pictogrammers.com/library/mdi/
+      class: blue
+    - name: yarn
+      url: https://yarnpkg.com/
+      class: blue
+    - name: 谷歌翻译
+      url: https://translate.google.com/
+      class: blue
+- group: 艺术
+  sites:
+    - name: Pixiv
+      url: https://www.pixiv.net/
+      class: red
+    - name: Fanbox
+      url: https://www.fanbox.cc/
+      class: red
+    - name: Pinterest
+      url: https://www.pinterest.jp/
+      class: red
+    - name: 花瓣
+      url: https://huaban.com/
+      class: blue
+    - name: Y站
+      url: https://yande.re/post
+      class: red
+- group: 社区
+  sites:
+    - name: github
+      url: https://github.com/
+      class: red
+    - name: Twitter
+      url: https://twitter.com/
+      class: red
+    - name: 微博
+      url: https://weibo.com/
+      class: green
+    - name: Reddit
+      url: https://www.reddit.com/
+      class: red
+    - name: Discord
+      url: https://discord.com/
+      class: red
+    - name: Facebook
+      url: https://www.facebook.com/
+      class: red
