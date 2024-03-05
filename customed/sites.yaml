@@ -19,6 +19,9 @@
     - name: 樱花动漫
       url: https://www.yinhuadm.cc/
       class: blue
+    - name: Kisssub
+      url: https://www.kisssub.org/
+      class: blue
     - name: HAnime
       url: https://hanime1.me/
       class: red
