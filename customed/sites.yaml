@@ -10,6 +10,9 @@
     - name: 风车动漫
       url: https://www.dm530w.org/
       class: green
+    - name: MX动漫
+      url: http://www.mxdm9.com/
+      class: green
     - name: AGE动漫
       url: https://www.agedm.org/
       class: blue
