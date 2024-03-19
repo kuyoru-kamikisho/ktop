@@ -42,6 +42,9 @@
     - name: 漫画柜
       url: https://www.manhuagui.com/
       class: blue
+    - name: Jump+
+      url: https://shonenjumpplus.com/
+      class: red
     - name: 古风漫画
       url: https://www.123gf.com/
       class: blue
