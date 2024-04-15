@@ -1,7 +1,7 @@
-import { app, Menu, nativeImage, MessageChannelMain, Tray, BrowserWindow, dialog, MenuItem } from 'electron';
+import {app, Menu, nativeImage, MessageChannelMain, Tray, BrowserWindow, dialog, MenuItem} from 'electron';
 import path from 'path';
-import { sendCpuAvg } from "./utils/sender/cpus";
-import { sendConfig } from "./utils/sender/theme";
+import {sendCpuAvg} from "./utils/sender/cpus";
+import {sendConfig} from "./utils/sender/theme";
 import {
     handleSearchEngine,
     handleSitesReader,
@@ -9,10 +9,10 @@ import {
     willParseCron,
     willRunCmd
 } from "./utils/handles/getters";
-import { listenExPro, listenOpenUrl, watchPosition } from "./utils/receiver/smalls";
-import { sendWindowBlur } from "./utils/sender/window";
-import { createAlertWindow } from "./windows/alert/index_a";
-import { proxyMsg } from "./utils/sender/injectListen";
+import {listenExPro, listenOpenUrl, watchPosition} from "./utils/receiver/smalls";
+import {sendWindowBlur} from "./utils/sender/window";
+import {createAlertWindow} from "./windows/alert/index_a";
+import {proxyMsg} from "./utils/sender/injectListen";
 
 export type WSO = {
     /// メインウィンドウ
@@ -109,11 +109,17 @@ if (!gotTheLock) {
                     ws.__mwd.setIgnoreMouseEvents(menuItem.checked)
                 }
             },
-            { label: '退出', type: 'normal', role: 'quit' },
+            {label: '退出', type: 'normal', role: 'quit'},
         ]);
         tray.setContextMenu(menu)
         tray.setTitle('ktop')
         app.dock?.hide();
+        tray.on('double-click', e => {
+            if (!ws.__mwd.isFocused()){
+                ws.__mwd.show()
+                ws.__mwd.focus()
+            }
+        })
     });
 
     app.on('window-all-closed', () => {
@@ -131,8 +137,8 @@ if (!gotTheLock) {
 
     app.on('before-quit', () => {
         try {
-            ws.MENU_CLONE.forEach(runnerGroup => {
-                runnerGroup.mlist.forEach(runnerItem => {
+            ws.MENU_CLONE.forEach((runnerGroup: any) => {
+                runnerGroup.mlist.forEach((runnerItem: any) => {
                     runnerItem.kill();
                 });
             });
