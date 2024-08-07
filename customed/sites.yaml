@@ -4,14 +4,8 @@
     - name: 哔哩哔哩
       url: https://www.bilibili.com/
       class: green
-    - name: 哔哩HKA
-      url: https://space.bilibili.com/11783021
-      class: red
-    - name: 风车动漫
-      url: https://www.dm530w.org/
-      class: green
     - name: MX动漫
-      url: http://www.mxdm9.com/
+      url: https://www.mxdm6.fans/
       class: green
     - name: AGE动漫
       url: https://www.agedm.org/
@@ -20,7 +14,7 @@
       url: https://www.nyafun.net/
       class: blue
     - name: 樱花动漫
-      url: https://www.yinhuadm.cc/
+      url: https://www.yinhuadm.vip/
       class: blue
     - name: Kisssub
       url: https://www.kisssub.org/
