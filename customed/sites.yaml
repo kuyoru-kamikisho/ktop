@@ -11,17 +11,23 @@
       url: https://www.dm530w.org/
       class: green
     - name: MX动漫
-      url: http://www.mxdm9.com/
+      url: https://www.mxdm6.fans/
       class: green
     - name: AGE动漫
       url: https://www.agedm.org/
+      class: blue
+    - name: 咕咕番
+      url: https://www.gugu3.com/
       class: blue
     - name: NyaFun
       url: https://www.nyafun.net/
       class: blue
     - name: 樱花动漫
-      url: https://www.yinhuadm.cc/
+      url: https://www.yinhuadm.vip/
       class: blue
+    - name: omoFun
+      url: https://www.omofun.in/
+      class: red
     - name: Kisssub
       url: https://www.kisssub.org/
       class: blue
