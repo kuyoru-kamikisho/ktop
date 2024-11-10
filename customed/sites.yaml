@@ -4,12 +4,6 @@
     - name: 哔哩哔哩
       url: https://www.bilibili.com/
       class: green
-    - name: 哔哩HKA
-      url: https://space.bilibili.com/11783021
-      class: red
-    - name: 风车动漫
-      url: https://www.dm530w.org/
-      class: green
     - name: MX动漫
       url: https://www.mxdm6.fans/
       class: green

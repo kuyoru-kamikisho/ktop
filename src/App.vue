@@ -1,7 +1,7 @@
 <template>
   <div class="ktop-app">
     <div @click="sword" class="item mts">
-      <svg-icon size="14" type="mdi" :path="mdiSwordCross "></svg-icon>
+      <svg-icon size="14" type="mdi" :path="mdiSwordCross"></svg-icon>
     </div>
     <i class="divider ver"></i>
     <div class="item cpu">{{ cpu }}</div>
