@@ -41,6 +41,42 @@
   bind: cmd_shutdown_0
   then: null
   send: null
+- id: cron_shutdown_in_1h10m
+  name: 1小时10分钟后关机
+  time: w - - - - 1 10 -
+  bind: cmd_shutdown_0
+  then: null
+  send: null
+- id: cron_shutdown_in_1h20m
+  name: 1小时20分钟后关机
+  time: w - - - - 1 20 -
+  bind: cmd_shutdown_0
+  then: null
+  send: null
+- id: cron_shutdown_in_1h30m
+  name: 1小时30分钟后关机
+  time: w - - - - 1 30 -
+  bind: cmd_shutdown_0
+  then: null
+  send: null
+- id: cron_shutdown_in_1h40m
+  name: 1小时40分钟后关机
+  time: w - - - - 1 40 -
+  bind: cmd_shutdown_0
+  then: null
+  send: null
+- id: cron_shutdown_in_1h50m
+  name: 1小时50分钟后关机
+  time: w - - - - 1 50 -
+  bind: cmd_shutdown_0
+  then: null
+  send: null
+- id: cron_shutdown_in_2h
+  name: 2小时后关机
+  time: w - - - - 2 - -
+  bind: cmd_shutdown_0
+  then: null
+  send: null
 - id: cron_wash_clothes
   name: 洗衣服开始（70分钟）
   time: w - - - - - 70 -
